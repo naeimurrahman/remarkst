@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REMARK IPS - Secure Order</title>
+
+<script src="https://js.stripe.com/v3/"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:#0f172a;color:#fff;}
+.container{width:90%;max-width:1200px;margin:auto;}
+.hero{padding:80px 0;text-align:center;background:linear-gradient(135deg,#0f172a,#1e293b);}
+.hero h1{font-size:42px;margin-bottom:20px;}
+.hero p{color:#cbd5e1;margin-bottom:30px;}
+.btn-primary{padding:12px 30px;background:#e11d48;border:none;color:#fff;border-radius:30px;cursor:pointer;}
+.section{padding:70px 0;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;}
+.card{background:#1e293b;padding:25px;border-radius:15px;text-align:center;transition:.3s;}
+.card:hover{transform:translateY(-8px);background:#334155;}
+.price{color:#22c55e;font-size:20px;margin:15px 0;font-weight:bold;}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;}
+.feature-box{background:#1e293b;padding:20px;border-radius:10px;text-align:center;}
+.secure-badge{text-align:center;margin-top:20px;color:#22c55e;}
+footer{text-align:center;padding:30px 0;color:#94a3b8;}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+<div class="container">
+<h1>REMARK Pure Sine Wave IPS</h1>
+<p>Secure Online Order & Fast Delivery</p>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+<h2 style="text-align:center;margin-bottom:40px;">Choose Your Model</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>400VA - 350W</h3>
+<p>12V | Sine Wave | 18 Months Warranty</p>
+<div class="price">৳12,550</div>
+<button class="btn-primary" onclick="buyNow('price_400VA_ID')">Buy Now</button>
+</div>
+
+<div class="card">
+<h3>800VA - 650W</h3>
+<p>12V | Sine Wave | 18 Months Warranty</p>
+<div class="price">৳14,550</div>
+<button class="btn-primary" onclick="buyNow('price_800VA_ID')">Buy Now</button>
+</div>
+
+<div class="card">
+<h3>1200VA - 1000W</h3>
+<p>12V | Sine Wave | 18 Months Warranty</p>
+<div class="price">৳18,550</div>
+<button class="btn-primary" onclick="buyNow('price_1200VA_ID')">Buy Now</button>
+</div>
+
+</div>
+
+<div class="secure-badge">
+🔒 Secure Payment Powered by Stripe
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+<h2 style="text-align:center;margin-bottom:40px;">Why Choose REMARK?</h2>
+<div class="features">
+<div class="feature-box">100% Copper Transformer</div>
+<div class="feature-box">95% Efficiency</div>
+<div class="feature-box">Pure Sine Wave Output</div>
+<div class="feature-box">Overload Protection</div>
+<div class="feature-box">UPS Mode 10-20ms</div>
+<div class="feature-box">18 Months Warranty</div>
+</div>
+</div>
+</section>
+
+<footer>
+© 2026 REMARK Technologies | All Rights Reserved
+</footer>
+
+<script>
+var stripe = Stripe("YOUR_PUBLISHABLE_KEY");
+
+function buyNow(priceId){
+fetch("https://your-server.com/create-checkout-session", {
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({priceId:priceId})
+})
+.then(res=>res.json())
+.then(data=>{
+stripe.redirectToCheckout({sessionId:data.id});
+});
+}
+</script>
+
+</body>
+</html>
