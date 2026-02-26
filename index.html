@@ -1,112 +1,3920 @@
 <!DOCTYPE html>
-<html>
+<html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>REMARK IPS - Secure Order</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REMARK IPS Bangladesh | Smart IPS Calculator & Verified Order</title>
+  <meta name="description" content="লোড ক্যালকুলেট করে সঠিক REMARK IPS মডেল বাছুন। রিয়েল-টাইম মডেল সাজেশন, ব্যাটারি Ah হিসাব, এবং verified order form।">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="REMARK IPS Bangladesh | Smart IPS Calculator">
+  <meta property="og:description" content="সঠিক VA, ব্যাটারি Ah, এবং আপনার লোড অনুযায়ী REMARK IPS মডেল সাজেশন।">
+  <meta property="og:image" content="remark-ips.png">
+  <meta property="og:url" content="https://remarkips.example.com/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="REMARK IPS Bangladesh | Smart IPS Calculator">
+  <meta name="twitter:description" content="লোড ক্যালকুলেশন ভিত্তিক IPS সাজেশন ও verified order request.">
+  <meta name="twitter:image" content="remark-ips.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "REMARK IPS Bangladesh",
+      "url": "https://remarkips.example.com/",
+      "logo": "https://remarkips.example.com/remark-ips.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+8801742313132",
+        "contactType": "customer service",
+        "areaServed": "BD"
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --bg: #f4f8f9;
+      --surface: #ffffff;
+      --text: #0f2431;
+      --muted: #4b626f;
+      --brand: #0f9d58;
+      --brand-dark: #0b7e46;
+      --accent: #006a67;
+      --accent-soft: #e3f6f4;
+      --danger: #d32f2f;
+      --border: #d9e2e7;
+      --shadow: 0 14px 40px rgba(14, 35, 51, 0.08);
+      --shadow-soft: 0 10px 24px rgba(14, 35, 51, 0.06);
+    }
 
-<script src="https://js.stripe.com/v3/"></script>
+    * {
+      box-sizing: border-box;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    html {
+      scroll-behavior: smooth;
+    }
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:#0f172a;color:#fff;}
-.container{width:90%;max-width:1200px;margin:auto;}
-.hero{padding:80px 0;text-align:center;background:linear-gradient(135deg,#0f172a,#1e293b);}
-.hero h1{font-size:42px;margin-bottom:20px;}
-.hero p{color:#cbd5e1;margin-bottom:30px;}
-.btn-primary{padding:12px 30px;background:#e11d48;border:none;color:#fff;border-radius:30px;cursor:pointer;}
-.section{padding:70px 0;}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;}
-.card{background:#1e293b;padding:25px;border-radius:15px;text-align:center;transition:.3s;}
-.card:hover{transform:translateY(-8px);background:#334155;}
-.price{color:#22c55e;font-size:20px;margin:15px 0;font-weight:bold;}
-.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;}
-.feature-box{background:#1e293b;padding:20px;border-radius:10px;text-align:center;}
-.secure-badge{text-align:center;margin-top:20px;color:#22c55e;}
-footer{text-align:center;padding:30px 0;color:#94a3b8;}
-</style>
+    body {
+      margin: 0;
+      font-family: "Hind Siliguri", "Noto Sans Bengali", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 15% 0%, #e7f8ef 0%, transparent 50%),
+        radial-gradient(circle at 90% 12%, #e5f3ff 0%, transparent 42%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #d9e6ee;
+    }
+
+    .site-header-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #0f9d58, #0a7fbe);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .brand-text strong {
+      display: block;
+      line-height: 1.1;
+      font-size: 1rem;
+    }
+
+    .brand-text span {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .top-nav {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .top-nav a {
+      text-decoration: none;
+      color: #204155;
+      font-weight: 700;
+      font-size: 0.88rem;
+      border: 1px solid #cfe0ea;
+      background: linear-gradient(180deg, #ffffff 0%, #f4fbff 100%);
+      border-radius: 10px;
+      padding: 8px 12px;
+      position: relative;
+      transition: 0.2s ease;
+      box-shadow: 0 8px 20px rgba(14, 35, 51, 0.06);
+    }
+
+    .top-nav a::after {
+      content: "";
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      bottom: 4px;
+      height: 2px;
+      background: linear-gradient(90deg, #0f9d58, #0a7fbe);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.2s ease;
+      border-radius: 999px;
+    }
+
+    .top-nav a:hover {
+      border-color: #9fcbde;
+      box-shadow: 0 10px 24px rgba(10, 127, 190, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .top-nav a:hover::after,
+    .top-nav a.active::after {
+      transform: scaleX(1);
+    }
+
+    .top-nav a.active {
+      border-color: #7fbe9f;
+      background: linear-gradient(180deg, #f0fff6 0%, #e8f7ff 100%);
+      box-shadow: 0 10px 28px rgba(15, 157, 88, 0.16);
+      color: #103b4f;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .lang-toggle {
+      display: inline-flex;
+      border: 1px solid #cfe0ea;
+      border-radius: 999px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .lang-btn {
+      border: 0;
+      background: transparent;
+      padding: 7px 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: #35596b;
+    }
+
+    .lang-btn.active {
+      background: #dff3ea;
+      color: #0b7843;
+    }
+
+    .menu-btn {
+      display: none;
+      border: 1px solid #cfe0ea;
+      background: #fff;
+      color: #204155;
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 72px 0;
+      scroll-margin-top: 94px;
+    }
+
+    .section.reveal-ready {
+      opacity: 0;
+      transform: translateY(22px);
+      filter: blur(2px);
+      transition: opacity 0.58s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.58s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.58s ease;
+      will-change: opacity, transform, filter;
+    }
+
+    .section.reveal-ready.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+
+    .section-tint {
+      background: linear-gradient(180deg, #f2fbf8 0%, #f7fcff 100%);
+      border-top: 1px solid #e6eff4;
+      border-bottom: 1px solid #e6eff4;
+    }
+
+    h1, h2, h3 {
+      margin-top: 0;
+      line-height: 1.3;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 4.8vw, 3.8rem);
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-top: 0;
+      font-size: 1.05rem;
+      line-height: 1.78;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    /* Unified visual effect layer for all sections, boxes and controls */
+    .section .container {
+      position: relative;
+      border: 1px solid #dce8ef;
+      border-radius: 20px;
+      padding: 20px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(248, 252, 255, 0.86) 100%);
+      box-shadow: 0 14px 34px rgba(14, 35, 51, 0.08);
+      transition: 0.24s ease;
+    }
+
+    .section .container::before {
+      content: "";
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      top: 0;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #0f9d58, #0a7fbe);
+      transform: scaleX(0.48);
+      transform-origin: center;
+      opacity: 0.75;
+      transition: transform 0.24s ease, opacity 0.24s ease;
+    }
+
+    .section .container:hover {
+      border-color: #bfd6e3;
+      box-shadow: 0 18px 42px rgba(14, 35, 51, 0.13);
+    }
+
+    .section .container:hover::before {
+      transform: scaleX(0.95);
+      opacity: 1;
+    }
+
+    .card,
+    .metric,
+    .product-card,
+    .result-card,
+    .popup-content,
+    .hero-image,
+    .solution-calc,
+    .problem-scene {
+      transition: 0.24s ease;
+    }
+
+    .card:hover,
+    .metric:hover,
+    .product-card:hover,
+    .result-card:hover,
+    .hero-image:hover,
+    .solution-calc:hover,
+    .problem-scene:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 34px rgba(14, 35, 51, 0.14);
+      border-color: #b7d0df;
+    }
+
+    .btn,
+    .preset-btn {
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 18px rgba(14, 35, 51, 0.08);
+    }
+
+    .btn::after,
+    .preset-btn::after {
+      content: "";
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      bottom: 3px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #0f9d58, #0a7fbe);
+      transform: scaleX(0);
+      transition: transform 0.2s ease;
+    }
+
+    .btn:hover::after,
+    .preset-btn:hover::after {
+      transform: scaleX(1);
+    }
+
+    input,
+    select {
+      transition: 0.18s ease;
+    }
+
+    input:hover,
+    select:hover {
+      border-color: #aac9d8;
+      box-shadow: 0 4px 10px rgba(14, 35, 51, 0.07);
+    }
+
+    input:focus,
+    select:focus {
+      outline: none !important;
+      border-color: #0a7fbe !important;
+      box-shadow: 0 0 0 3px rgba(10, 127, 190, 0.17);
+    }
+
+    .hero-wrap {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 46px;
+      align-items: center;
+      padding-top: 40px;
+    }
+
+    .hero-sub {
+      max-width: 54ch;
+      margin-bottom: 4px;
+      font-size: 1.12rem;
+    }
+
+    .hero-title {
+      color: #0b2534;
+      text-shadow: 0 10px 28px rgba(20, 75, 105, 0.12);
+    }
+
+    .hero-title .title-focus {
+      display: inline-block;
+      background: linear-gradient(90deg, #0f9d58 0%, #0a7fbe 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      border-bottom: 4px solid #bfe5d7;
+      padding-bottom: 2px;
+      white-space: nowrap;
+      word-break: keep-all;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border: 1px solid #b6e8cb;
+      color: var(--brand-dark);
+      border-radius: 999px;
+      background: #ecfff4;
+      font-weight: 700;
+      margin-bottom: 20px;
+      font-size: 0.92rem;
+    }
+
+    .hero-points {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin: 28px 0 34px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .hero-points li {
+      background: linear-gradient(145deg, #ffffff 0%, #eefaf4 100%);
+      border: 1px solid #cde8d8;
+      border-radius: 14px;
+      padding: 16px 16px;
+      font-weight: 700;
+      box-shadow: 0 12px 24px rgba(24, 83, 56, 0.08);
+      font-size: 0.98rem;
+      color: #124430;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-points li::before {
+      content: "";
+      width: 8px;
+      height: 100%;
+      background: linear-gradient(180deg, #0f9d58 0%, #0a7fbe 100%);
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .offer-banner {
+      margin: 10px 0 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .offer-title {
+      margin: 22px 0 10px;
+      font-size: 0.84rem;
+      font-weight: 900;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: #8a5a00;
+    }
+
+    .offer-pill {
+      background: linear-gradient(120deg, #fff6ce 0%, #ffd267 52%, #ffbf47 100%);
+      border: 2px solid #f0b020;
+      color: #523700;
+      border-radius: 16px;
+      padding: 14px 16px;
+      font-size: 1.02rem;
+      font-weight: 900;
+      box-shadow: 0 14px 34px rgba(173, 123, 6, 0.35);
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      animation: offerPulse 2.2s ease-in-out infinite;
+    }
+
+    @keyframes offerPulse {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-2px);
+      }
+    }
+
+    .hero-badge {
+      background: var(--accent-soft);
+      border: 1px solid #c5e8e5;
+      color: #0f5854;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 10px;
+      padding: 13px 22px;
+      font-weight: 700;
+      font-size: 0.98rem;
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--brand);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--brand-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: #e8f5f1;
+      color: #0d6f66;
+      border: 1px solid #bbe1dc;
+    }
+
+    .btn-secondary:hover {
+      background: #d8eee9;
+    }
+
+    .hero-image {
+      background: linear-gradient(145deg, #f1fffa, #e6f6ff);
+      border: 1px solid #cde3ee;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .hero-image img {
+      width: min(100%, 440px);
+      border-radius: 14px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .hero-video-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #0b2534;
+      border: 1px solid #c8dce8;
+    }
+
+    .hero-video-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+
+    .metric-row {
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .metric {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 14px;
+      box-shadow: var(--shadow-soft);
+      text-align: center;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.1rem;
+      color: var(--accent);
+    }
+
+    .metric span {
+      font-size: 0.87rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .cards-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 18px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+      font-size: 1.08rem;
+    }
+
+    .card-soft {
+      background: linear-gradient(180deg, #fff 0%, #f8fcff 100%);
+    }
+
+    .feature-list,
+    .proof-list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    .feature-list li,
+    .proof-list li {
+      margin-bottom: 8px;
+    }
+
+    .problem-list {
+      margin: 14px 0 18px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .problem-list li {
+      position: relative;
+      padding-left: 26px;
+      margin-bottom: 10px;
+      color: #25414f;
+      font-weight: 600;
+    }
+
+    .problem-list li::before {
+      content: "•";
+      position: absolute;
+      left: 8px;
+      top: 0;
+      color: #d87a00;
+      font-size: 1.1rem;
+      font-weight: 900;
+    }
+
+    .problem-note {
+      margin: 14px 0 10px;
+      font-weight: 800;
+      color: #7b2e00;
+    }
+
+    .problem-risk-list {
+      margin: 8px 0 16px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .problem-risk-list li {
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 10px;
+      color: #5e1f1f;
+      font-weight: 700;
+    }
+
+    .problem-risk-list li::before {
+      content: "✖";
+      position: absolute;
+      left: 6px;
+      top: 0;
+      color: #d43232;
+      font-size: 0.9rem;
+      font-weight: 900;
+    }
+
+    .problem-scene {
+      background: linear-gradient(145deg, #fff8ef 0%, #fff2db 100%);
+      border: 1px solid #f0d6a7;
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin: 12px 0 14px;
+      color: #614a1e;
+      font-weight: 700;
+      line-height: 1.8;
+    }
+
+    .problem-end {
+      color: #214b3c;
+      font-weight: 800;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .solution-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 14px;
+    }
+
+    .solution-lead {
+      margin-bottom: 12px;
+    }
+
+    .solution-checks {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .solution-checks li {
+      margin-bottom: 9px;
+      color: #214c3a;
+      font-weight: 700;
+    }
+
+    .solution-note {
+      margin: 12px 0;
+      font-weight: 800;
+      color: #8a5a00;
+    }
+
+    .solution-calc {
+      background: linear-gradient(145deg, #eef9ff 0%, #e8f6ff 100%);
+      border: 1px solid #cfe6f5;
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .product-grid {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .models-toolbar {
+      margin-top: 14px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .product-card {
+      background: #fff;
+      border: 1px solid #d4e5ef;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      display: block;
+      background: #edf5fa;
+    }
+
+    .product-body {
+      padding: 14px;
+    }
+
+    .product-model {
+      margin: 0 0 2px;
+      font-weight: 800;
+      font-size: 1rem;
+      color: #123a50;
+    }
+
+    .stock-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      border: 1px solid #c8dfd2;
+      background: #ecf9f1;
+      color: #0b6e40;
+    }
+
+    .stock-badge.low {
+      background: #fff5e9;
+      border-color: #f3d0a0;
+      color: #995a00;
+    }
+
+    .stock-badge.out {
+      background: #ffeceb;
+      border-color: #f3b9b5;
+      color: #a2271f;
+    }
+
+    .product-name {
+      margin: 0 0 8px;
+      font-size: 0.92rem;
+      color: #5d737f;
+      font-weight: 600;
+    }
+
+    .product-specs {
+      margin: 0;
+      padding-left: 16px;
+      color: #36525f;
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+
+    .product-price {
+      margin: 10px 0 0;
+      color: #0b6e40;
+      font-weight: 800;
+      font-size: 1rem;
+    }
+
+    .lifepo4-grid {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 16px;
+    }
+
+    .lifepo4-table-wrap {
+      overflow-x: auto;
+      border: 1px solid #d4e5ef;
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .lifepo4-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      font-size: 0.9rem;
+    }
+
+    .lifepo4-table th,
+    .lifepo4-table td {
+      border: 1px solid #dbe7ef;
+      padding: 8px 10px;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .lifepo4-table th {
+      background: #eef8ff;
+      color: #10384d;
+      font-weight: 800;
+    }
+
+    .lifepo4-note {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: #6a4c1b;
+      background: #fff6df;
+      border: 1px solid #f0d7a4;
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+
+    .model-price-note {
+      margin-top: 8px;
+      font-size: 0.88rem;
+      color: #1a4f67;
+      font-weight: 700;
+      min-height: 20px;
+    }
+
+    .battery-model-wrap.hidden {
+      display: none;
+    }
+
+    .key-feature-grid {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .spec-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .spec-list li {
+      position: relative;
+      margin-bottom: 8px;
+      padding-left: 22px;
+    }
+
+    .spec-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #0f9d58;
+      font-weight: 900;
+    }
+
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 24px;
+    }
+
+    .input-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .preset-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .preset-btn {
+      border: 1px solid #cfe0ea;
+      border-radius: 999px;
+      background: #f4fbff;
+      color: #1f4b63;
+      padding: 7px 12px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+    }
+
+    .preset-btn:hover {
+      background: #e4f4ff;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    .legal-note {
+      margin-top: 10px;
+      font-size: 0.86rem;
+      color: #4b626f;
+      line-height: 1.6;
+    }
+
+    .consent-row {
+      margin-top: 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.9rem;
+      color: #2a4553;
+    }
+
+    .consent-row input {
+      margin-top: 3px;
+      width: auto;
+    }
+
+    input,
+    select {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 12px 12px;
+      font-size: 0.98rem;
+      font-family: inherit;
+      background: #fff;
+    }
+
+    input:focus,
+    select:focus {
+      outline: 2px solid #bbe1cc;
+      border-color: #7fcba2;
+    }
+
+    .invalid-field {
+      border-color: #d32f2f !important;
+      box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.14) !important;
+    }
+
+    .note {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .result-card {
+      border: 2px solid #b9e9cd;
+      background: linear-gradient(180deg, #f3fff8 0%, #ffffff 100%);
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .result-item {
+      margin: 0 0 8px;
+      color: #0f3d28;
+      font-weight: 700;
+    }
+
+    .highlight {
+      font-size: 1.2rem;
+      color: #006d3d;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .faq-item + .faq-item {
+      margin-top: 12px;
+    }
+
+    .accordion {
+      background: #e8f4ff;
+      color: #123046;
+      border: 1px solid #c9dff1;
+      border-radius: 10px;
+      width: 100%;
+      text-align: left;
+      padding: 14px 16px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .panel {
+      display: none;
+      background: #fff;
+      border: 1px solid #d9e8f4;
+      border-top: 0;
+      border-radius: 0 0 10px 10px;
+      padding: 14px 16px;
+      color: var(--muted);
+    }
+
+    .form-card .warning {
+      border: 1px solid #f1bdbd;
+      background: #fff2f2;
+      color: #8a1a1a;
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin: 0 0 16px;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .form-grid .full {
+      grid-column: 1 / -1;
+    }
+
+    .contact-strip {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      border-top: 1px dashed #ccdae2;
+      padding-top: 12px;
+    }
+
+    .contact-grid {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .dealer-apply-card {
+      background: linear-gradient(140deg, #eef8ff 0%, #e9fff3 100%);
+      border: 1px solid #c8e1ef;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .dealer-apply-card h3 {
+      margin: 0 0 8px;
+      color: #123a50;
+      font-size: 1.1rem;
+    }
+
+    .dealer-apply-card p {
+      margin: 0 0 14px;
+      color: #35596b;
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+
+    .dealer-apply-card .btn {
+      width: 100%;
+    }
+
+    footer {
+      padding: 20px 0 34px;
+      color: #425862;
+      text-align: center;
+      font-size: 0.92rem;
+    }
+
+    footer a {
+      color: #0a6f9f;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .whatsapp-btn {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      background: #25d366;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 13px 20px;
+      font-weight: 700;
+      box-shadow: 0 12px 24px rgba(8, 117, 56, 0.32);
+      z-index: 50;
+    }
+
+    .live-support-btn {
+      position: fixed;
+      right: 18px;
+      bottom: 78px;
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 18px;
+      background: linear-gradient(135deg, #0a7fbe 0%, #0f9d58 100%);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 14px 26px rgba(8, 69, 109, 0.34);
+      z-index: 80;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .live-support-btn svg {
+      width: 18px;
+      height: 18px;
+      display: block;
+    }
+
+    .live-support-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 30px rgba(8, 69, 109, 0.42);
+    }
+
+    .mobile-cta {
+      display: none;
+    }
+
+    .honeypot {
+      position: absolute !important;
+      left: -9999px !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      height: 0 !important;
+      width: 0 !important;
+      overflow: hidden !important;
+    }
+
+    .review-media {
+      width: 100%;
+      height: 180px;
+      border-radius: 12px;
+      object-fit: cover;
+      background: #e9f2f8;
+      margin-bottom: 10px;
+      border: 1px solid #d4e5ef;
+    }
+
+    .popup {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(8, 24, 34, 0.68);
+      z-index: 100;
+      padding: 16px;
+    }
+
+    .popup-content {
+      width: min(460px, 96%);
+      background: #fff;
+      border-radius: 16px;
+      padding: 26px;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+
+    .popup-content h3 {
+      margin-bottom: 6px;
+    }
+
+    .dealer-popup-content {
+      width: min(760px, 96%);
+      text-align: left;
+      max-height: 92vh;
+      overflow-y: auto;
+    }
+
+    .dealer-popup-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .dealer-popup-close {
+      border: 1px solid #cfe0ea;
+      background: #fff;
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-weight: 700;
+      color: #284b5f;
+      cursor: pointer;
+    }
+
+    .dealer-requirements {
+      margin: 10px 0 14px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid #cfe1ee;
+      background: linear-gradient(180deg, #f5fbff 0%, #eef8ff 100%);
+    }
+
+    .dealer-requirements h4 {
+      margin: 0 0 6px;
+      font-size: 0.98rem;
+      color: #123a50;
+    }
+
+    .dealer-req-list {
+      margin: 0;
+      padding-left: 16px;
+      color: #35596b;
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .dealer-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .dealer-form-grid .full {
+      grid-column: 1 / -1;
+    }
+
+    .dealer-success-box {
+      display: none;
+      text-align: center;
+      padding: 12px 4px 2px;
+    }
+
+    .dealer-success-box p {
+      margin: 0 0 8px;
+    }
+
+    .error-msg {
+      color: var(--danger);
+      font-size: 0.9rem;
+      margin-top: 8px;
+      min-height: 20px;
+      font-weight: 600;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .section.reveal-ready,
+      .section.reveal-ready.is-visible {
+        opacity: 1;
+        transform: none;
+        filter: none;
+        transition: none;
+      }
+    }
+
+    @media (max-width: 960px) {
+      .site-header-inner {
+        min-height: 64px;
+      }
+
+      .menu-btn {
+        display: inline-flex;
+      }
+
+      .top-nav {
+        position: fixed;
+        top: 64px;
+        left: 0;
+        right: 0;
+        z-index: 85;
+        background: #fff;
+        border-bottom: 1px solid #d9e6ee;
+        padding: 12px 16px;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .top-nav.open {
+        display: flex;
+      }
+
+      .top-actions .btn {
+        display: none;
+      }
+
+      .hero-wrap,
+      .cards-3,
+      .product-grid,
+      .lifepo4-grid,
+      .calc-grid,
+      .split,
+      .solution-wrap,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .metric-row {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-points,
+      .input-grid,
+      .form-grid,
+      .dealer-form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .models-toolbar {
+        justify-content: stretch;
+      }
+
+      .offer-banner {
+        grid-template-columns: 1fr;
+      }
+
+      .key-feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .lifepo4-table {
+        min-width: 0;
+      }
+
+      .lifepo4-table thead {
+        display: none;
+      }
+
+      .lifepo4-table tr {
+        display: block;
+        border-bottom: 1px solid #dbe7ef;
+      }
+
+      .lifepo4-table td {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        gap: 8px;
+        white-space: normal;
+        border: 0;
+        border-top: 1px dashed #e2ecf2;
+        padding: 8px 10px;
+      }
+
+      .lifepo4-table td:first-child {
+        border-top: 0;
+      }
+
+      .lifepo4-table td::before {
+        content: attr(data-label);
+        font-weight: 800;
+        color: #123a50;
+      }
+
+    .section {
+      padding: 56px 0;
+    }
+
+      h1 {
+        font-size: clamp(1.95rem, 8.2vw, 2.55rem);
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .whatsapp-btn {
+        display: none;
+      }
+
+      .live-support-btn {
+        display: inline-flex;
+        right: 12px;
+        bottom: 84px;
+        padding: 10px 14px;
+        font-size: 0.84rem;
+      }
+
+      .mobile-cta {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #ffffffeb;
+        backdrop-filter: blur(5px);
+        border-top: 1px solid #ccdae2;
+        padding: 10px 12px;
+        display: block;
+        z-index: 70;
+      }
+
+      .mobile-cta .btn {
+        width: 100%;
+      }
+
+      body {
+        padding-bottom: 78px;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <header class="site-header">
+    <div class="container site-header-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark">R</span>
+        <span class="brand-text">
+          <strong>REMARK IPS</strong>
+          <span data-i18n="brand_tagline"></span>
+        </span>
+      </a>
+      <button class="menu-btn" id="menuBtn" type="button" data-i18n="menu_btn">Menu</button>
+      <nav class="top-nav" id="topNav">
+        <a href="#top" data-i18n="nav_home">Home</a>
+        <a href="#problem" data-i18n="nav_problem">Problem</a>
+        <a href="#solution" data-i18n="nav_solution">Solution</a>
+        <a href="#calculator" data-i18n="nav_calculator">Calculator</a>
+        <a href="#why-remark" data-i18n="nav_why">Why Remark</a>
+        <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
+        <a href="#reviews" data-i18n="nav_reviews">Reviews</a>
+        <a href="#order" data-i18n="nav_order">Order Form</a>
+      </nav>
+      <div class="top-actions">
+        <div class="lang-toggle">
+          <button class="lang-btn active" type="button" data-lang="bn">বাংলা</button>
+          <button class="lang-btn" type="button" data-lang="en">English</button>
+        </div>
+      </div>
+    </div>
+  </header>
 
-<section class="hero">
-<div class="container">
-<h1>REMARK Pure Sine Wave IPS</h1>
-<p>Secure Online Order & Fast Delivery</p>
-</div>
-</section>
+  <section class="section" id="top">
+    <div class="container hero-wrap">
+      <div>
+        <span class="tag" data-i18n="hero_tag">২০ বছরের পথচলায় গ্রাহকের আস্থাই আমাদের পরিচয়</span>
+        <h1 class="hero-title" id="heroTitle">REMARK Inverter<br><span class="title-focus">Pure Sine Wave IPS/UPS</span></h1>
+        <p class="muted hero-sub" id="heroDesc">
+          বাসা, অফিস, দোকান কিংবা ক্লিনিকের জন্য স্থিতিশীল ব্যাকআপ পাওয়ার সমাধান।
+          সঠিক লোড হিসাব করে আজই আপনার জন্য উপযুক্ত মডেল বেছে নিন।
+        </p>
+        <ul class="hero-points" id="heroPoints"></ul>
+        <p class="offer-title" id="offerTitle" data-i18n="special_offer_title">Special Offer</p>
+        <div class="offer-banner">
+          <span class="offer-pill" id="offer1">12 মাস Full Warranty</span>
+          <span class="offer-pill" id="offer2">36 মাস Free Service</span>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary" id="heroCalcBtn" type="button" onclick="scrollToCalculator()">লোড ক্যালকুলেট করুন</button>
+          <button class="btn btn-secondary" id="heroOrderBtn" type="button" onclick="goToOrderForm()" data-i18n="hero_btn_order">অর্ডার ফর্মে যান</button>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="hero-video-wrap">
+          <iframe
+            id="heroVideoFrame"
+            src="about:blank"
+            title="Customer Review Video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section class="section">
-<div class="container">
-<h2 style="text-align:center;margin-bottom:40px;">Choose Your Model</h2>
+  <section class="section section-tint" id="problem">
+    <div class="container">
+      <h2 data-i18n="sec_problem_title">⚡ লোডশেডিং কি শুধু অসুবিধা? নাকি ক্ষতির কারণ?</h2>
+      <p class="muted" id="problemIntro">প্রতিদিন এমন সমস্যার মুখোমুখি হচ্ছেন?</p>
+      <ul class="problem-list">
+        <li data-i18n="problem_p1">ফ্যান বন্ধ হয়ে গরমে ঘুমাতে পারছেন না?</li>
+        <li data-i18n="problem_p2">ফ্রিজ বন্ধ হয়ে খাবার নষ্ট হচ্ছে?</li>
+        <li data-i18n="problem_p3">অনলাইন কাজ বারবার থেমে যাচ্ছে?</li>
+        <li data-i18n="problem_p4">বাচ্চার পড়াশোনা ব্যাহত হচ্ছে?</li>
+      </ul>
+      <p class="problem-note" data-i18n="problem_note">কিন্তু শুধু এটুকুই সমস্যা না...</p>
+      <ul class="problem-risk-list">
+        <li data-i18n="problem_r1">ভুল VA বা কম Watt এর IPS নিলে বারবার ট্রিপ করবে</li>
+        <li data-i18n="problem_r2">অতিরিক্ত লোডে ব্যাটারি দ্রুত নষ্ট হতে পারে</li>
+        <li data-i18n="problem_r3">ভোল্টেজ অস্থির হলে টিভি-ফ্রিজ ঝুঁকিতে পড়ে</li>
+        <li data-i18n="problem_r4">কম ক্ষমতার ইনভার্টার গরম হয়ে পারফরম্যান্স কমে যায়</li>
+        <li data-i18n="problem_r5">ভুল মডেল নিলে টাকা খরচ করেও সঠিক ব্যাকআপ পাওয়া যায় না</li>
+      </ul>
+      <div class="problem-scene">
+        <div data-i18n="problem_scene1">রাতে বিদ্যুৎ চলে গেল।</div>
+        <div data-i18n="problem_scene2">IPS আছে, কিন্তু লোড নিতে পারছে না।</div>
+        <div data-i18n="problem_scene3">সব আবার বন্ধ।</div>
+      </div>
+      <p class="problem-end" data-i18n="problem_end">
+        এটা শুধু বিরক্তিকর না — এটা টাকার অপচয়।<br><br>
+        লোডশেডিং থামানো যাবে না।<br>কিন্তু ভুল সিদ্ধান্ত এড়ানো যাবে।
+      </p>
+    </div>
+  </section>
 
-<div class="grid">
+  <section class="section" id="solution">
+    <div class="container">
+      <h2 data-i18n="sec_solution_title">✅ এখন সমাধান একটাই — সঠিক হিসাব + সঠিক IPS</h2>
+      <p class="muted solution-lead" data-i18n="solution_intro">
+        REMARK Pure Sine Wave IPS শুধু ব্যাকআপ দেয় না — দেয় স্থিতিশীল, নিরাপদ ও সঠিক পাওয়ার সাপোর্ট।
+      </p>
+      <div class="solution-wrap">
+        <div class="card card-soft">
+          <ul class="solution-checks">
+            <li data-i18n="solution_p1">✔ 100% Pure Sine Wave — সংবেদনশীল ডিভাইসের জন্য নিরাপদ</li>
+            <li data-i18n="solution_p2">✔ স্থিতিশীল ভোল্টেজ আউটপুট</li>
+            <li data-i18n="solution_p3">✔ দীর্ঘস্থায়ী ব্যাটারি সাপোর্ট</li>
+            <li data-i18n="solution_p4">✔ বিভিন্ন VA রেঞ্জ — ছোট থেকে বড় লোড পর্যন্ত</li>
+          </ul>
+        </div>
+        <div class="solution-calc">
+          <h3 data-i18n="solution_calc_title">🧮 নিজের লোড নিজেই হিসাব করুন</h3>
+          <p class="muted" data-i18n="solution_calc_intro">আমাদের বিল্ট-ইন Load Calculator দিয়ে আপনি জানতে পারবেন:</p>
+          <ul class="solution-checks">
+            <li data-i18n="solution_c1">আপনার ঘরে কত Watt প্রয়োজন</li>
+            <li data-i18n="solution_c2">কোন VA মডেল আপনার জন্য সঠিক</li>
+            <li data-i18n="solution_c3">অতিরিক্ত খরচ এড়ানো যাবে</li>
+            <li data-i18n="solution_c4">কম ক্ষমতার মডেল নেওয়ার ঝুঁকি থাকবে না</li>
+          </ul>
+          <p class="muted" data-i18n="solution_calc_note">
+            আপনার ফ্যান, লাইট, টিভি, ফ্রিজ কতগুলো — সংখ্যা দিন, সিস্টেম নিজেই সাজেস্ট করবে সঠিক মডেল।
+          </p>
+        </div>
+      </div>
+      <p class="solution-note" data-i18n="solution_end">এভাবে আপনি:</p>
+      <ul class="solution-checks">
+        <li data-i18n="solution_e1">✔ কম নেবেন না</li>
+        <li data-i18n="solution_e2">✔ বেশি কিনে অযথা টাকা নষ্ট করবেন না</li>
+        <li data-i18n="solution_e3">✔ সঠিক ক্ষমতার IPS পাবেন</li>
+      </ul>
+    </div>
+  </section>
 
-<div class="card">
-<h3>400VA - 350W</h3>
-<p>12V | Sine Wave | 18 Months Warranty</p>
-<div class="price">৳12,550</div>
-<button class="btn-primary" onclick="buyNow('price_400VA_ID')">Buy Now</button>
-</div>
+  <section class="section" id="calculator">
+    <div class="container">
+      <h2 data-i18n="sec_calc_title">Smart Load Calculator</h2>
+      <p class="muted" id="calcIntro">আপনার চাহিদা অনুযায়ী IPS নিন। ক্যালকুলেশনের পর suggested model দেখাবে এবং চাইলে Order Form-এ যাবে।</p>
+      <div class="calc-grid">
+        <div class="card">
+          <div class="preset-row">
+            <button class="preset-btn" type="button" data-i18n="preset_home" onclick="applyPreset('home')">Home Preset</button>
+            <button class="preset-btn" type="button" data-i18n="preset_office" onclick="applyPreset('office')">Office Preset</button>
+            <button class="preset-btn" type="button" data-i18n="preset_shop" onclick="applyPreset('shop')">Shop Preset</button>
+          </div>
+          <div class="consent-row">
+            <input type="checkbox" id="includeSmpsLoads">
+            <label for="includeSmpsLoads" data-i18n="lbl_include_smps">টিভি/পিসি/রাউটার (SMPS লোড) ক্যালকুলেশনে যুক্ত করুন</label>
+          </div>
+          <div class="input-grid">
+            <div class="field">
+              <label for="fan" data-i18n="lbl_fan">ফ্যান (৭৫W)</label>
+              <input type="number" id="fan" min="0" placeholder="যেমন 3" data-ph="ph_fan">
+            </div>
+            <div class="field">
+              <label for="light" data-i18n="lbl_light">লাইট (২০W)</label>
+              <input type="number" id="light" min="0" placeholder="যেমন 8" data-ph="ph_light">
+            </div>
+            <div class="field">
+              <label for="motor" data-i18n="lbl_motor">মোটর (1HP)</label>
+              <input type="number" id="motor" min="0" placeholder="যেমন 1" data-ph="ph_motor">
+            </div>
+            <div class="field">
+              <label for="fridge" data-i18n="lbl_fridge">ফ্রিজ (৩০০W)</label>
+              <input type="number" id="fridge" min="0" placeholder="যেমন 1" data-ph="ph_fridge">
+            </div>
+            <div class="field">
+              <label for="backupHour" data-i18n="lbl_backup_hour">ব্যাকআপ সময় (ঘণ্টা)</label>
+              <input type="number" id="backupHour" min="1" step="0.5" placeholder="যেমন 2" data-ph="ph_backup_hour">
+            </div>
+            <div class="field">
+              <label for="tv" data-i18n="lbl_tv">টিভি (১২০W)</label>
+              <input type="number" id="tv" min="0" value="0" placeholder="যেমন 1" data-ph="ph_tv">
+            </div>
+            <div class="field">
+              <label for="pc" data-i18n="lbl_pc">পিসি (২০০W)</label>
+              <input type="number" id="pc" min="0" value="0" placeholder="যেমন 1" data-ph="ph_pc">
+            </div>
+            <div class="field">
+              <label for="router" data-i18n="lbl_router">রাউটার (১২W)</label>
+              <input type="number" id="router" min="0" value="0" placeholder="যেমন 1" data-ph="ph_router">
+            </div>
+          </div>
+          <p class="note" id="calcNote">নোট: এটি আনুমানিক হিসাব। বাস্তব ব্যাকআপ সময় লোড, ব্যাটারির অবস্থা ও পরিবেশের ওপর নির্ভর করবে।</p>
+          <button class="btn btn-primary" id="calcBtn" type="button" onclick="calculateLoad()">রেজাল্ট দেখুন</button>
+          <p id="calcError" class="error-msg"></p>
+        </div>
 
-<div class="card">
-<h3>800VA - 650W</h3>
-<p>12V | Sine Wave | 18 Months Warranty</p>
-<div class="price">৳14,550</div>
-<button class="btn-primary" onclick="buyNow('price_800VA_ID')">Buy Now</button>
-</div>
+        <div class="result-card" id="resultBox" style="display:none;">
+          <h3 class="highlight" id="resultTitle">আপনার জন্য প্রস্তাবিত মডেল</h3>
+          <p class="result-item" id="modelName"></p>
+          <p class="result-item" id="realLoad"></p>
+          <p class="result-item" id="requiredVA"></p>
+          <p class="result-item" id="batteryNeed"></p>
+          <p class="result-item" id="extraCapacity"></p>
+          <p class="result-item" id="modelPrice"></p>
+          <p class="note" id="resultNote">এই মডেলটি আপনার ফর্মে auto-fill হবে।</p>
+          <button class="btn btn-secondary" id="resultOrderBtn" type="button" onclick="goToOrderForm()" data-i18n="result_order_btn">এই মডেল অর্ডার করুন</button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="card">
-<h3>1200VA - 1000W</h3>
-<p>12V | Sine Wave | 18 Months Warranty</p>
-<div class="price">৳18,550</div>
-<button class="btn-primary" onclick="buyNow('price_1200VA_ID')">Buy Now</button>
-</div>
+  <section class="section section-tint" id="why-remark">
+    <div class="container">
+      <h2 data-i18n="sec_features_title">কেন REMARK IPS বেছে নেবেন?</h2>
+      <p class="muted" id="featuresIntro">সেফটি, পারফরম্যান্স এবং দীর্ঘমেয়াদি ব্যবহার নিশ্চিত করার জন্য তৈরি।</p>
+      <div class="cards-3">
+        <article class="card card-soft">
+          <h3 data-i18n="core_features_title">Core Features</h3>
+          <ul class="feature-list" id="coreFeaturesList"></ul>
+        </article>
+        <article class="card card-soft">
+          <h3 data-i18n="customer_trust_title">Customer Trust</h3>
+          <ul class="proof-list" id="trustList"></ul>
+        </article>
+        <article class="card card-soft">
+          <h3 data-i18n="support_service_title">Support & Service</h3>
+          <ul class="proof-list" id="supportList"></ul>
+        </article>
+      </div>
+      <p class="muted" data-i18n="spec_intro">প্রটেকশন, দক্ষতা এবং স্থিতিশীল আউটপুটের জন্য প্রয়োজনীয় টেকনিক্যাল ফিচার।</p>
+      <div class="key-feature-grid">
+        <div class="card">
+          <h3 data-i18n="key_features_title">টেকনিক্যাল ফিচারসমূহ</h3>
+          <ul class="spec-list" id="keyList1"></ul>
+        </div>
+        <div class="card">
+          <h3 data-i18n="perf_title">Protection & Performance</h3>
+          <ul class="spec-list" id="keyList2"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-</div>
+  <section class="section" id="pricing">
+    <div class="container">
+      <h2 data-i18n="sec_models_title">মডেল ও দাম (Official List)</h2>
+      <p class="muted" id="modelsIntro">নিচের তালিকাটি আপনার দেওয়া শিট অনুযায়ী আপডেট করা হয়েছে।</p>
+      <div class="models-toolbar">
+        <button class="btn btn-secondary" id="toggleAllBtn" type="button" onclick="toggleAllProducts()">See All</button>
+      </div>
+      <div class="product-grid" id="productGrid"></div>
+      <p class="note" id="productNote">ছবিগুলো ডেমো। আপনি নিজের image link দিলে আমি replace করে দেব।</p>
+    </div>
+  </section>
 
-<div class="secure-badge">
-🔒 Secure Payment Powered by Stripe
-</div>
+  <section class="section section-tint" id="lifepo4">
+    <div class="container">
+      <h2 data-i18n="sec_lifepo4_title">REMARK LITHIUM BATTERY (LiFePO4)</h2>
+      <p class="muted" data-i18n="lifepo4_intro">REMARK LiFePO4 ব্যাটারির অফিসিয়াল মডেল, ক্যাপাসিটি, MRP এবং ওয়ারেন্টি তালিকা।</p>
+      <div class="lifepo4-grid">
+        <div>
+          <div class="lifepo4-table-wrap">
+            <table class="lifepo4-table">
+              <thead>
+                <tr>
+                  <th data-i18n="lfp_col_sl">SL</th>
+                  <th data-i18n="lfp_col_model">Model</th>
+                  <th data-i18n="lfp_col_capacity">Capacity</th>
+                  <th data-i18n="lfp_col_life">Life Cycle</th>
+                  <th data-i18n="lfp_col_mrp">MRP</th>
+                  <th data-i18n="lfp_col_warranty">Warranty</th>
+                </tr>
+              </thead>
+              <tbody id="lifepo4TableBody"></tbody>
+            </table>
+          </div>
+          <p class="lifepo4-note" data-i18n="lifepo4_note">নোট: কাঁচামালের বাজার দরের পরিবর্তনের কারণে কোম্পানি যে কোনো সময় মূল্য পরিবর্তন করতে পারে।</p>
+        </div>
+        <article class="card card-soft">
+          <h3 data-i18n="lifepo4_features_title">LiFePO4 Battery Features</h3>
+          <ul class="spec-list" id="lifepo4FeaturesList"></ul>
+        </article>
+      </div>
+    </div>
+  </section>
 
-</div>
-</section>
+  <section class="section section-tint" id="reviews">
+    <div class="container">
+      <h2 data-i18n="sec_reviews_title">Customer Reviews</h2>
+      <div class="cards-3">
+        <article class="card card-soft">
+          <img class="review-media" src="https://placehold.co/600x360?text=Customer+Review+1" alt="Customer review 1" loading="lazy" decoding="async">
+          <p class="muted" data-i18n="review_1">"লোড অনুযায়ী মডেল নেওয়ার পর ব্যাকআপ টাইম অনেক ভালো পেয়েছি।"</p>
+        </article>
+        <article class="card card-soft">
+          <img class="review-media" src="https://placehold.co/600x360?text=Customer+Review+2" alt="Customer review 2" loading="lazy" decoding="async">
+          <p class="muted" data-i18n="review_2">"ইন্সটলেশন সাপোর্ট দ্রুত ছিল, ব্যবহার একদম স্মুথ।"</p>
+        </article>
+        <article class="card card-soft">
+          <iframe class="review-media" src="https://www.youtube.com/embed/VIDEO_ID" title="Customer review video" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <p class="muted" data-i18n="review_3">"আগের IPS থেকে বিদ্যুৎ খরচ কমেছে এবং সার্ভিসও ভালো।"</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-<section class="section">
-<div class="container">
-<h2 style="text-align:center;margin-bottom:40px;">Why Choose REMARK?</h2>
-<div class="features">
-<div class="feature-box">100% Copper Transformer</div>
-<div class="feature-box">95% Efficiency</div>
-<div class="feature-box">Pure Sine Wave Output</div>
-<div class="feature-box">Overload Protection</div>
-<div class="feature-box">UPS Mode 10-20ms</div>
-<div class="feature-box">18 Months Warranty</div>
-</div>
-</div>
-</section>
+  <section class="section section-tint" id="stats">
+    <div class="container">
+      <div class="metric-row">
+        <div class="metric">
+          <strong>500+</strong>
+          <span data-i18n="metric_install">Successful Install</span>
+        </div>
+        <div class="metric">
+          <strong>95%</strong>
+          <span data-i18n="metric_efficiency">Efficiency Rate</span>
+        </div>
+        <div class="metric">
+          <strong>24h</strong>
+          <span data-i18n="metric_support">Fast Customer Support</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<footer>
-© 2026 REMARK Technologies | All Rights Reserved
-</footer>
+  <section class="section" id="order">
+    <div class="container">
+      <form class="card form-card" id="leadForm">
+        <h2 data-i18n="sec_contact_title">Request Verification</h2>
+        <p class="warning" id="formWarning">সকল অর্ডার ফোন ভেরিফিকেশন ছাড়া কনফার্ম করা হয় না।</p>
+        <input type="text" id="website" class="honeypot" autocomplete="off" tabindex="-1" aria-hidden="true">
 
-<script>
-var stripe = Stripe("YOUR_PUBLISHABLE_KEY");
+        <div class="form-grid">
+          <div class="field full">
+            <label for="name" data-i18n="lbl_name">আপনার নাম</label>
+            <input type="text" id="name" placeholder="পুরো নাম লিখুন" data-ph="ph_name">
+          </div>
+          <div class="field">
+            <label for="phone" data-i18n="lbl_phone">ফোন নাম্বার</label>
+            <input type="tel" id="phone" placeholder="01XXXXXXXXX" maxlength="11" data-ph="ph_phone">
+          </div>
+          <div class="field">
+            <label for="selectedModel" data-i18n="lbl_model">নির্বাচিত মডেল</label>
+            <select id="selectedModel"></select>
+            <p class="model-price-note" id="selectedModelPrice"></p>
+          </div>
+          <div class="field">
+            <label for="needsBattery" data-i18n="lbl_needs_battery">ব্যাটারি লাগবে?</label>
+            <select id="needsBattery">
+              <option value="no" data-i18n="no_text">না</option>
+              <option value="yes" data-i18n="yes_text">হ্যাঁ</option>
+            </select>
+          </div>
+          <div class="field battery-model-wrap hidden" id="batteryModelWrap">
+            <label for="batteryModel" data-i18n="lbl_battery_model">ব্যাটারি মডেল</label>
+            <select id="batteryModel" disabled>
+              <option value="" data-i18n="ph_battery_model">ব্যাটারি মডেল নির্বাচন করুন</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="area" data-i18n="lbl_area">জেলা</label>
+            <select id="area">
+              <option value="" data-i18n="ph_area">জেলা নির্বাচন করুন</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="thana" data-i18n="lbl_thana">থানা/উপজেলা</label>
+            <select id="thana" disabled>
+              <option value="" data-i18n="ph_thana">থানা/উপজেলা নির্বাচন করুন</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="callbackTime" data-i18n="lbl_callback">কল ব্যাক সময়</label>
+            <select id="callbackTime">
+              <option value="" data-i18n="ph_callback">সময় নির্বাচন করুন</option>
+              <option data-i18n="cb_morning">সকাল (১০টা-১টা)</option>
+              <option data-i18n="cb_afternoon">দুপুর (১টা-৫টা)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="powerCutHour" data-i18n="lbl_powercut">দৈনিক লোডশেডিং (ঘণ্টা)</label>
+            <input type="number" id="powerCutHour" min="0" step="0.5" placeholder="যেমন 4" data-ph="ph_powercut">
+          </div>
+          <div class="field full">
+            <label for="address" data-i18n="lbl_address">ঠিকানা</label>
+            <input type="text" id="address" placeholder="এলাকা, থানা, জেলা" data-ph="ph_address">
+          </div>
+        </div>
 
-function buyNow(priceId){
-fetch("https://your-server.com/create-checkout-session", {
-method:"POST",
-headers:{"Content-Type":"application/json"},
-body:JSON.stringify({priceId:priceId})
-})
-.then(res=>res.json())
-.then(data=>{
-stripe.redirectToCheckout({sessionId:data.id});
-});
-}
-</script>
+        <p class="legal-note" id="warrantyTerms" data-i18n="warranty_terms">ওয়ারেন্টি ও সার্ভিস শর্ত প্রযোজ্য। সঠিক ইনস্টলেশন ও প্রস্তাবিত ব্যাটারি ব্যবহারের উপর পারফরম্যান্স নির্ভরশীল।</p>
+        <label class="consent-row">
+          <input type="checkbox" id="consentCheck">
+          <span id="consentText" data-i18n="consent_text">আমি তথ্যগুলো সঠিকভাবে প্রদান করেছি এবং <a href="terms-and-conditions.html">Privacy Policy</a>/<a href="terms-and-conditions.html">Terms &amp; Conditions</a> মেনে নিচ্ছি।</span>
+        </label>
 
+        <button class="btn btn-primary" id="submitBtn" type="submit">Submit Request</button>
+        <p class="error-msg" id="formError"></p>
+      </form>
+    </div>
+  </section>
+
+  <section class="section section-tint" id="dealer">
+    <div class="container">
+      <h2 data-i18n="sec_contact_dealer_title">Dealer Apply</h2>
+      <aside class="dealer-apply-card" style="max-width:700px;margin:14px auto 0;">
+        <h3 data-i18n="dealer_apply_title">ডিলার হতে চান?</h3>
+        <p data-i18n="dealer_apply_desc">আপনার এলাকায় REMARK IPS ডিলারশিপ নিতে এখনই আবেদন করুন। দ্রুত যাচাই করে আমাদের টিম যোগাযোগ করবে।</p>
+        <button class="btn btn-primary" type="button" onclick="openDealerApplyPopup()" data-i18n="dealer_apply_btn">ডিলার হিসেবে আবেদন করুন</button>
+      </aside>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p id="footerLine1">© 2026 REMARK Technologies. All rights reserved.</p>
+      <p id="footerLine2">Dhaka, Bangladesh | Hotline: 01742-313132</p>
+      <p id="footerLine3"><a href="terms-and-conditions.html">Privacy Policy</a> | <a href="terms-and-conditions.html">Terms & Conditions</a></p>
+    </div>
+  </footer>
+
+  <button class="live-support-btn" id="liveSupportBtn" type="button" onclick="openLiveSupport()">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M20 11.4C20 15.38 16.42 18.6 12 18.6C11.17 18.6 10.37 18.49 9.62 18.29L5 20L6.38 16.25C5.53 14.97 5 13.27 5 11.4C5 7.42 8.58 4.2 13 4.2C17.42 4.2 20 7.42 20 11.4Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span>Live Support</span>
+  </button>
+
+  <div class="mobile-cta">
+    <button class="btn btn-primary" id="mobileOrderBtn" type="button" onclick="goToOrderForm()" data-i18n="mobile_order_now">Order Now</button>
+  </div>
+
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <h3 id="popupTitle">রিকোয়েস্ট গ্রহণ করা হয়েছে</h3>
+      <p id="popupText">আমাদের প্রতিনিধি ২৪ ঘণ্টার মধ্যে আপনার সাথে যোগাযোগ করবে।</p>
+      <p id="popupRef"></p>
+      <button class="btn btn-primary" id="popupCloseBtn" type="button" onclick="closePopup()">বন্ধ করুন</button>
+    </div>
+  </div>
+
+  <div class="popup" id="dealerPopup">
+    <div class="popup-content dealer-popup-content">
+      <div class="dealer-popup-head">
+        <h3 data-i18n="dealer_popup_title">ডিলার আবেদন ফর্ম</h3>
+        <button class="dealer-popup-close" type="button" onclick="closeDealerApplyPopup()" data-i18n="popup_close">বন্ধ করুন</button>
+      </div>
+      <p class="muted" data-i18n="dealer_popup_subtitle">নিচের তথ্যগুলো পূরণ করলে আপনার ডিলার আবেদন দ্রুত যাচাই করা হবে।</p>
+
+      <div class="dealer-requirements">
+        <h4 data-i18n="dealer_need_title">ডিলার হতে যা যা লাগবে</h4>
+        <ul class="dealer-req-list">
+          <li data-i18n="dealer_need_1">ব্যবসা প্রতিষ্ঠান/শোরুম তথ্য</li>
+          <li data-i18n="dealer_need_2">বৈধ Trade License নম্বর</li>
+          <li data-i18n="dealer_need_3">এলাকা ও ঠিকানা যেখানে ডিলারশিপ চালাবেন</li>
+          <li data-i18n="dealer_need_4">যোগাযোগযোগ্য মোবাইল নম্বর</li>
+        </ul>
+      </div>
+
+      <form id="dealerForm">
+        <input type="text" id="dealerWebsite" class="honeypot" autocomplete="off" tabindex="-1" aria-hidden="true">
+        <div class="dealer-form-grid">
+          <div class="field">
+            <label for="dealerApplicantName" data-i18n="dealer_lbl_name">আবেদনকারীর নাম</label>
+            <input type="text" id="dealerApplicantName" data-ph="dealer_ph_name" placeholder="পুরো নাম লিখুন">
+          </div>
+          <div class="field">
+            <label for="dealerApplicantPhone" data-i18n="dealer_lbl_phone">মোবাইল নম্বর</label>
+            <input type="tel" id="dealerApplicantPhone" data-ph="dealer_ph_phone" placeholder="01XXXXXXXXX" maxlength="11">
+          </div>
+          <div class="field">
+            <label for="dealerBusinessName" data-i18n="dealer_lbl_business_name">প্রতিষ্ঠানের নাম</label>
+            <input type="text" id="dealerBusinessName" data-ph="dealer_ph_business_name" placeholder="আপনার ব্যবসার নাম">
+          </div>
+          <div class="field">
+            <label for="dealerTradeLicenseStatus" data-i18n="dealer_lbl_trade_license">বৈধ Trade License আছে?</label>
+            <select id="dealerTradeLicenseStatus">
+              <option value="" data-i18n="dealer_ph_trade_license">নির্বাচন করুন</option>
+              <option value="yes" data-i18n="yes_text">হ্যাঁ</option>
+              <option value="no" data-i18n="no_text">না</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="dealerBusinessType" data-i18n="dealer_lbl_business_type">ব্যবসার ধরন</label>
+            <select id="dealerBusinessType">
+              <option value="" data-i18n="dealer_ph_business_type">নির্বাচন করুন</option>
+              <option value="electronics">Electronics</option>
+              <option value="electrical">Electrical</option>
+              <option value="battery-ips">Battery/IPS</option>
+              <option value="multi-brand">Multi-brand Retail</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="dealerDistrict" data-i18n="dealer_lbl_district">জেলা</label>
+            <select id="dealerDistrict">
+              <option value="" data-i18n="dealer_ph_district">জেলা নির্বাচন করুন</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="dealerThana" data-i18n="dealer_lbl_thana">থানা/উপজেলা</label>
+            <select id="dealerThana" disabled>
+              <option value="" data-i18n="dealer_ph_thana">থানা/উপজেলা নির্বাচন করুন</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="dealerExperience" data-i18n="dealer_lbl_experience">ব্যবসার অভিজ্ঞতা (বছর)</label>
+            <input type="number" id="dealerExperience" min="0" step="1" data-ph="dealer_ph_experience" placeholder="যেমন 3">
+          </div>
+          <div class="field">
+            <label for="dealerInvestment" data-i18n="dealer_lbl_investment">প্রাথমিক বিনিয়োগ ক্ষমতা</label>
+            <select id="dealerInvestment">
+              <option value="" data-i18n="dealer_ph_investment">বাজেট নির্বাচন করুন</option>
+              <option value="below_2_lakh">Below 2 Lakh</option>
+              <option value="2_to_5_lakh">2-5 Lakh</option>
+              <option value="5_to_10_lakh">5-10 Lakh</option>
+              <option value="above_10_lakh">Above 10 Lakh</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="dealerShowroom" data-i18n="dealer_lbl_showroom">শোরুম আছে?</label>
+            <select id="dealerShowroom">
+              <option value="" data-i18n="dealer_ph_showroom">নির্বাচন করুন</option>
+              <option value="yes" data-i18n="yes_text">হ্যাঁ</option>
+              <option value="no" data-i18n="no_text">না</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="dealerAddress" data-i18n="dealer_lbl_address">পূর্ণ ঠিকানা</label>
+            <input type="text" id="dealerAddress" data-ph="dealer_ph_address" placeholder="এলাকা, থানা, জেলা">
+          </div>
+          <div class="field full">
+            <label for="dealerNote" data-i18n="dealer_lbl_note">অতিরিক্ত তথ্য (ঐচ্ছিক)</label>
+            <input type="text" id="dealerNote" data-ph="dealer_ph_note" placeholder="শোরুম লোকেশন/বর্তমান ব্র্যান্ড ইত্যাদি">
+          </div>
+        </div>
+        <label class="consent-row">
+          <input type="checkbox" id="dealerConsent">
+          <span data-i18n="dealer_consent">আমি দেওয়া তথ্য সঠিক এবং যাচাইয়ের জন্য যোগাযোগে সম্মত।</span>
+        </label>
+        <button class="btn btn-primary" id="dealerSubmitBtn" type="submit" data-i18n="dealer_submit_btn">ডিলার আবেদন জমা দিন</button>
+        <p class="error-msg" id="dealerFormError"></p>
+      </form>
+
+      <div class="dealer-success-box" id="dealerSuccessWrap">
+        <p id="dealerSuccessText" data-i18n="dealer_success_text">আপনার ডিলার আবেদন গ্রহণ করা হয়েছে।</p>
+        <p id="dealerPopupRef"></p>
+        <button class="btn btn-primary" type="button" onclick="closeDealerApplyPopup()" data-i18n="popup_close">বন্ধ করুন</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ================================
+    // Integration Config (Edit Here)
+    // ================================
+    const INTEGRATION_CONFIG = {
+      brandId: "remark_ips",
+      leadSource: "landing_page",
+      dealerSource: "dealer-application",
+      legalPagePath: "terms-and-conditions.html",
+      heroVideoUrl: "https://www.youtube.com/embed/VIDEO_ID",
+      fallbackProductImage: "remark-ips.png",
+      contact: {
+        hotline: "01742-313132",
+        dealerSupport: "01911-223344",
+        footerAddressBn: "ঢাকা, বাংলাদেশ",
+        footerAddressEn: "Dhaka, Bangladesh"
+      },
+      app: {
+        leadApiEndpoint: "https://script.google.com/macros/s/AKfycbzV-bl4jWctCWKhfpPcY7-wZK1JQcyxSYlbPOFTr0s-AJ32x7GZRdUTaxhS9_uzQZUf9g/exec",
+        dealerApiEndpoint: "https://script.google.com/macros/s/AKfycbzV-bl4jWctCWKhfpPcY7-wZK1JQcyxSYlbPOFTr0s-AJ32x7GZRdUTaxhS9_uzQZUf9g/exec",
+        googleSheetWebhook: "",
+        leadRateLimitMs: 60000,
+        ga4MeasurementId: "",
+        metaPixelId: ""
+      },
+      tawk: {
+        enabled: true,
+        propertyId: "69a04529a3350a1c35083fa9",
+        widgetId: "1jid0sb7m"
+      }
+    };
+
+    const BRAND_ID = INTEGRATION_CONFIG.brandId;
+    const HERO_VIDEO_URL = INTEGRATION_CONFIG.heroVideoUrl;
+    const APP_CONFIG = INTEGRATION_CONFIG.app;
+    const TAWK_CONFIG = INTEGRATION_CONFIG.tawk;
+
+    const modelCatalog = [
+      { maxVA: 400, model: "RDIN-450DSP (400VA)", price: "৳10,550", defaultAh: 100 },
+      { maxVA: 400, model: "RDIN-450PH (400VA)", price: "৳23,800", defaultAh: 30 },
+      { maxVA: 600, model: "RDIN-650DSP (600VA)", price: "৳13,550", defaultAh: 120 },
+      { maxVA: 600, model: "RDIN-650PH (600VA)", price: "৳29,900", defaultAh: 50 },
+      { maxVA: 800, model: "RDIN-800DSP (800VA)", price: "৳14,550", defaultAh: 150 },
+      { maxVA: 800, model: "RDIN-800PH (800VA)", price: "৳33,900", defaultAh: 60 },
+      { maxVA: 800, model: "RDIN-MAX800PH (800VA)", price: "৳43,900", defaultAh: 105 },
+      { maxVA: 1000, model: "RDIN-1050DSP (1000VA)", price: "৳16,550", defaultAh: 200 },
+      { maxVA: 1000, model: "RDIN-1050PH (1000VA)", price: "৳46,900", defaultAh: 105 },
+      { maxVA: 1200, model: "RDIN-1250DSP (1200VA)", price: "৳18,550", defaultAh: 200 },
+      { maxVA: 1200, model: "RDIN-1250PH (1200VA)", price: "৳48,900", defaultAh: 105 },
+      { maxVA: 1500, model: "RDIN-1520DSP (1500VA)", price: "৳22,550", defaultAh: 200 },
+      { maxVA: 2000, model: "RDIN-2KDSP (2KVA)", price: "৳30,550", defaultAh: 200 },
+      { maxVA: 3000, model: "RDIN-3KDSP24V (3KVA)", price: "৳45,550", defaultAh: 200 },
+      { maxVA: 3000, model: "RDIN-3KDSP36V (3KVA)", price: "৳48,550", defaultAh: 200 },
+      { maxVA: 4000, model: "RDIN-4KDSP (4KVA)", price: "৳62,550", defaultAh: 200 },
+      { maxVA: 5000, model: "RDIN-5KDSP (5KVA)", price: "৳75,550", defaultAh: 200 },
+      { maxVA: Infinity, model: "RDIN-10KDSP (10KVA)", price: "৳149,550", defaultAh: 200 }
+    ];
+
+    const calculatorCatalog = [
+      { va: 800, model: "RDIN-800DSP (800VA)", price: "৳14,550" },
+      { va: 1000, model: "RDIN-1050DSP (1000VA)", price: "৳16,550" },
+      { va: 1500, model: "RDIN-1520DSP (1500VA)", price: "৳22,550" },
+      { va: 3000, model: "RDIN-3KDSP24V (3KVA)", price: "৳45,550" },
+      { va: 5000, model: "RDIN-5KDSP (5KVA)", price: "৳75,550" }
+    ];
+
+    const lifepo4Catalog = [
+      { model: "RLB-30", capacity: "12V-30Ah", lifeCycle: "5000C / 12 Years+", mrp: "৳12,900", warranty: "18 Months Cell Warranty" },
+      { model: "RLB-50", capacity: "12V-50Ah", lifeCycle: "4000C / 10 Years+", mrp: "৳17,900", warranty: "18 Months Cell Warranty" },
+      { model: "RLB-60", capacity: "12V-60Ah", lifeCycle: "6000C / 16 Years+", mrp: "৳19,900", warranty: "18 Months Cell Warranty" },
+      { model: "RLB-105", capacity: "12V-105Ah", lifeCycle: "6000C / 16 Years+", mrp: "৳30,900", warranty: "18 Months Cell Warranty" },
+      { model: "RLB-210", capacity: "12V-210Ah", lifeCycle: "6000C / 16 Years+", mrp: "৳62,500", warranty: "18 Months Cell Warranty" },
+      { model: "RLB-105V24", capacity: "24V-105Ah", lifeCycle: "6000C / 16 Years+", mrp: "৳62,500", warranty: "18 Months Cell Warranty" },
+      { model: "RLB-105V48", capacity: "48V-105Ah", lifeCycle: "6000C / 16 Years+", mrp: "৳123,500", warranty: "18 Months Cell Warranty" },
+      { model: "RLB-105V60", capacity: "60V-105Ah", lifeCycle: "6000C / 16 Years+", mrp: "৳154,500", warranty: "18 Months Cell Warranty" }
+    ];
+
+    // === ADDED ===
+    const STOCK_COUNT_BY_MODEL = {
+      "RDIN-450DSP": 12,
+      "RDIN-450PH": 3,
+      "RDIN-650DSP": 8,
+      "RDIN-650PH": 4,
+      "RDIN-800DSP": 10,
+      "RDIN-800PH": 7,
+      "RDIN-MAX800PH": 0,
+      "RDIN-1050DSP": 9,
+      "RDIN-1050PH": 0,
+      "RDIN-1250DSP": 7,
+      "RDIN-1250PH": 0,
+      "RDIN-1520DSP": 6,
+      "RDIN-2KDSP": 5,
+      "RDIN-3KDSP24V": 2,
+      "RDIN-3KDSP36V": 2,
+      "RDIN-4KDSP": 6,
+      "RDIN-5KDSP": 5,
+      "RDIN-10KDSP": 0
+    };
+
+    // === ADDED ===
+    function getStockStatus(stock) {
+      if (stock <= 0) return "out";
+      if (stock < 5) return "low";
+      return "in";
+    }
+
+    // === UPDATED ===
+    const PRODUCT_CATALOG_RAW = [
+      { model: "RDIN-450DSP", typeBn: "ইনভার্টার/ইউপিএস", typeEn: "Inverter/UPS", capacity: "400VA", watt: "350W", battery: "100Ah Support", price: "৳10,550", img: "https://placehold.co/600x420?text=RDIN-450DSP" },
+      { model: "RDIN-450PH", typeBn: "পাওয়ার হাউজ ইনভার্টার/ইউপিএস", typeEn: "Power House Inverter/UPS", capacity: "400VA", watt: "350W", battery: "30Ah LiFePO4 In-Built", price: "৳23,800", img: "https://placehold.co/600x420?text=RDIN-450PH" },
+      { model: "RDIN-650DSP", typeBn: "ইনভার্টার/ইউপিএস", typeEn: "Inverter/UPS", capacity: "600VA", watt: "500W", battery: "120Ah Support", price: "৳13,550", img: "https://placehold.co/600x420?text=RDIN-650DSP" },
+      { model: "RDIN-650PH", typeBn: "পাওয়ার হাউজ ইনভার্টার/ইউপিএস", typeEn: "Power House Inverter/UPS", capacity: "600VA", watt: "500W", battery: "50Ah LiFePO4 In-Built", price: "৳29,900", img: "https://placehold.co/600x420?text=RDIN-650PH" },
+      { model: "RDIN-800DSP", typeBn: "ইনভার্টার/ইউপিএস", typeEn: "Inverter/UPS", capacity: "800VA", watt: "650W", battery: "150-200Ah Support", price: "৳14,550", img: "https://placehold.co/600x420?text=RDIN-800DSP" },
+      { model: "RDIN-800PH", typeBn: "পাওয়ার হাউজ ইনভার্টার/ইউপিএস", typeEn: "Power House Inverter/UPS", capacity: "800VA", watt: "650W", battery: "60Ah LiFePO4 In-Built", price: "৳33,900", img: "https://placehold.co/600x420?text=RDIN-800PH" },
+      { model: "RDIN-MAX800PH", typeBn: "পাওয়ার হাউজ ইনভার্টার/ইউপিএস", typeEn: "Power House Inverter/UPS", capacity: "800VA", watt: "650W", battery: "105Ah LiFePO4 In-Built", price: "৳43,900", img: "https://placehold.co/600x420?text=RDIN-MAX800PH" },
+      { model: "RDIN-1050DSP", typeBn: "ইনভার্টার/ইউপিএস", typeEn: "Inverter/UPS", capacity: "1000VA", watt: "800W", battery: "200Ah", price: "৳16,550", img: "https://placehold.co/600x420?text=RDIN-1050DSP" },
+      { model: "RDIN-1050PH", typeBn: "পাওয়ার হাউজ ইনভার্টার/ইউপিএস", typeEn: "Power House Inverter/UPS", capacity: "1000VA", watt: "800W", battery: "105Ah LiFePO4 In-Built", price: "৳46,900", img: "https://placehold.co/600x420?text=RDIN-1050PH" },
+      { model: "RDIN-1250DSP", typeBn: "ইনভার্টার/ইউপিএস", typeEn: "Inverter/UPS", capacity: "1200VA", watt: "1000W", battery: "200Ah", price: "৳18,550", img: "https://placehold.co/600x420?text=RDIN-1250DSP" },
+      { model: "RDIN-1250PH", typeBn: "পাওয়ার হাউজ ইনভার্টার/ইউপিএস", typeEn: "Power House Inverter/UPS", capacity: "1200VA", watt: "1000W", battery: "105Ah LiFePO4 In-Built", price: "৳48,900", img: "https://placehold.co/600x420?text=RDIN-1250PH" },
+      { model: "RDIN-1520DSP", typeBn: "ইনভার্টার/ইউপিএস", typeEn: "Inverter/UPS", capacity: "1500VA", watt: "1200W", battery: "200Ah", price: "৳22,550", img: "https://placehold.co/600x420?text=RDIN-1520DSP" },
+      { model: "RDIN-2KDSP", typeBn: "ইনভার্টার/ইউপিএস", typeEn: "Inverter/UPS", capacity: "2KVA", watt: "1600W", battery: "200Ah x2", price: "৳30,550", img: "https://placehold.co/600x420?text=RDIN-2KDSP" },
+      { model: "RDIN-3KDSP24V", typeBn: "ইনভার্টার/ইউপিএস", typeEn: "Inverter/UPS", capacity: "3KVA", watt: "2400W", battery: "200Ah x2", price: "৳45,550", img: "https://placehold.co/600x420?text=RDIN-3KDSP24V" },
+      { model: "RDIN-3KDSP36V", typeBn: "ইনভার্টার/ইউপিএস", typeEn: "Inverter/UPS", capacity: "3KVA", watt: "2400W", battery: "200Ah x3", price: "৳48,550", img: "https://placehold.co/600x420?text=RDIN-3KDSP36V" },
+      { model: "RDIN-4KDSP", typeBn: "ইনভার্টার/ইউপিএস", typeEn: "Inverter/UPS", capacity: "4KVA", watt: "3200W", battery: "200Ah x4", price: "৳62,550", img: "https://placehold.co/600x420?text=RDIN-4KDSP" },
+      { model: "RDIN-5KDSP", typeBn: "ইনভার্টার/ইউপিএস", typeEn: "Inverter/UPS", capacity: "5KVA", watt: "4000W", battery: "200Ah x4", price: "৳75,550", img: "https://placehold.co/600x420?text=RDIN-5KDSP" },
+      { model: "RDIN-10KDSP", typeBn: "ইনভার্টার/ইউপিএস", typeEn: "Inverter/UPS", capacity: "10KVA", watt: "8000W", battery: "200Ah x4", price: "৳149,550", img: "https://placehold.co/600x420?text=RDIN-10KDSP" }
+    ];
+
+    // === ADDED ===
+    const productCatalog = PRODUCT_CATALOG_RAW.map((item) => Object.assign({}, item, {
+      stock_count: STOCK_COUNT_BY_MODEL[item.model] || 0
+    }));
+
+    const i18n = {
+      bn: {
+        brand_tagline: "",
+        nav_home: "Home",
+        nav_problem: "সমস্যা",
+        nav_solution: "সমাধান",
+        nav_why: "কেন Remark",
+        nav_spec: "Specification",
+        nav_pricing: "Pricing",
+        nav_reviews: "Reviews",
+        nav_order: "Order Form",
+        nav_features: "ফিচার",
+        nav_models: "মডেল",
+        nav_calculator: "ক্যালকুলেটর",
+        nav_faq: "FAQ",
+        nav_contact: "যোগাযোগ",
+        menu_btn: "মেনু",
+        hero_tag: "২০ বছরের পথচলায় গ্রাহকের আস্থাই আমাদের পরিচয়",
+        hero_title: "REMARK Inverter<br><span class=\"title-focus\">Pure Sine Wave IPS/UPS</span>",
+        hero_desc: "বাসা, অফিস, দোকান কিংবা ক্লিনিকের জন্য স্থিতিশীল ব্যাকআপ পাওয়ার সমাধান। সঠিক লোড হিসাব করে আজই আপনার জন্য উপযুক্ত মডেল বেছে নিন।",
+        hero_offer1: "12 মাস Full Warranty",
+        hero_offer2: "36 মাস Free Service",
+        special_offer_title: "স্পেশাল অফার",
+        hero_btn_calc: "লোড ক্যালকুলেট করুন",
+        hero_btn_order: "অর্ডার ফর্মে যান",
+        hero_badge1: "",
+        hero_badge2: "Pure Sine Wave",
+        hero_badge3: "Nationwide Delivery",
+        hero_points: ["৯৫% পর্যন্ত দক্ষতা", "১০০% কপার ট্রান্সফরমার", "জিপ চার্জ টেকনোলজি", "পিওর সাইন ওয়েভ আউটপুট"],
+        metric_install: "সফল ইনস্টলেশন",
+        metric_efficiency: "দক্ষতার হার",
+        metric_support: "দ্রুত গ্রাহক সহায়তা",
+        sec_problem_title: "⚡ লোডশেডিং কি শুধু অসুবিধা? নাকি ক্ষতির কারণ?",
+        problem_intro: "প্রতিদিন এমন সমস্যার মুখোমুখি হচ্ছেন?",
+        problem_p1: "ফ্যান বন্ধ হয়ে গরমে ঘুমাতে পারছেন না?",
+        problem_p2: "ফ্রিজ বন্ধ হয়ে খাবার নষ্ট হচ্ছে?",
+        problem_p3: "অনলাইন কাজ বারবার থেমে যাচ্ছে?",
+        problem_p4: "বাচ্চার পড়াশোনা ব্যাহত হচ্ছে?",
+        problem_note: "কিন্তু শুধু এটুকুই সমস্যা না...",
+        problem_r1: "ভুল VA বা কম Watt এর IPS নিলে বারবার ট্রিপ করবে",
+        problem_r2: "অতিরিক্ত লোডে ব্যাটারি দ্রুত নষ্ট হতে পারে",
+        problem_r3: "ভোল্টেজ অস্থির হলে টিভি-ফ্রিজ ঝুঁকিতে পড়ে",
+        problem_r4: "কম ক্ষমতার ইনভার্টার গরম হয়ে পারফরম্যান্স কমে যায়",
+        problem_r5: "ভুল মডেল নিলে টাকা খরচ করেও সঠিক ব্যাকআপ পাওয়া যায় না",
+        problem_scene1: "রাতে বিদ্যুৎ চলে গেল।",
+        problem_scene2: "IPS আছে, কিন্তু লোড নিতে পারছে না।",
+        problem_scene3: "সব আবার বন্ধ।",
+        problem_end: "এটা শুধু বিরক্তিকর না — এটা টাকার অপচয়।<br><br>লোডশেডিং থামানো যাবে না।<br>কিন্তু ভুল সিদ্ধান্ত এড়ানো যাবে।",
+        sec_solution_title: "✅ এখন সমাধান একটাই — সঠিক হিসাব + সঠিক IPS",
+        solution_intro: "REMARK Pure Sine Wave IPS শুধু ব্যাকআপ দেয় না — দেয় স্থিতিশীল, নিরাপদ ও সঠিক পাওয়ার সাপোর্ট।",
+        solution_p1: "✔ 100% Pure Sine Wave — সংবেদনশীল ডিভাইসের জন্য নিরাপদ",
+        solution_p2: "✔ স্থিতিশীল ভোল্টেজ আউটপুট",
+        solution_p3: "✔ দীর্ঘস্থায়ী ব্যাটারি সাপোর্ট",
+        solution_p4: "✔ বিভিন্ন VA রেঞ্জ — ছোট থেকে বড় লোড পর্যন্ত",
+        solution_calc_title: "🧮 নিজের লোড নিজেই হিসাব করুন",
+        solution_calc_intro: "আমাদের বিল্ট-ইন Load Calculator দিয়ে আপনি জানতে পারবেন:",
+        solution_c1: "আপনার ঘরে কত Watt প্রয়োজন",
+        solution_c2: "কোন VA মডেল আপনার জন্য সঠিক",
+        solution_c3: "অতিরিক্ত খরচ এড়ানো যাবে",
+        solution_c4: "কম ক্ষমতার মডেল নেওয়ার ঝুঁকি থাকবে না",
+        solution_calc_note: "আপনার ফ্যান, লাইট, মোটর, ফ্রিজ (প্রয়োজনে টিভি/পিসি/রাউটার) — সংখ্যা দিন, সিস্টেম নিজেই সাজেস্ট করবে সঠিক মডেল।",
+        solution_end: "এভাবে আপনি:",
+        solution_e1: "✔ কম নেবেন না",
+        solution_e2: "✔ বেশি কিনে অযথা টাকা নষ্ট করবেন না",
+        solution_e3: "✔ সঠিক ক্ষমতার IPS পাবেন",
+        sec_features_title: "কেন REMARK IPS বেছে নেবেন?",
+        features_intro: "সেফটি, পারফরম্যান্স এবং দীর্ঘমেয়াদি ব্যবহার নিশ্চিত করার জন্য তৈরি।",
+        sec_spec_title: "Specification",
+        spec_intro: "প্রটেকশন, দক্ষতা এবং স্থিতিশীল আউটপুটের জন্য প্রয়োজনীয় টেকনিক্যাল ফিচার।",
+        core_features_title: "মূল ফিচার",
+        core_features: ["১০০% কপার ট্রান্সফরমার", "জিপ চার্জ টেকনোলজি", "৯৫% দক্ষতা", "শর্ট সার্কিট, ওভার চার্জ ও ওভার লোড প্রোটেকশন"],
+        customer_trust_title: "গ্রাহকের আস্থা",
+        trust_points: ["৫০০+ সফল ইনস্টলেশন", "সারা বাংলাদেশে ডেলিভারি", "বিশ্বস্ত ডিলার নেটওয়ার্ক"],
+        support_service_title: "সাপোর্ট ও সার্ভিস",
+        support_points: ["ইন্সটলেশন সহায়তা", "ফোনে অর্ডার ভেরিফিকেশন", "দ্রুত বিক্রয়োত্তর সাপোর্ট"],
+        sec_models_title: "Pricing & Models",
+        models_intro: "নিচের তালিকাটি আপনার দেওয়া শিট অনুযায়ী আপডেট করা হয়েছে।",
+        product_note: "ছবিগুলো ডেমো। আপনি নিজের image link দিলে আমি replace করে দেব।",
+        sec_lifepo4_title: "REMARK LITHIUM BATTERY (LiFePO4)",
+        lifepo4_intro: "REMARK LiFePO4 ব্যাটারির অফিসিয়াল মডেল, ক্যাপাসিটি, MRP এবং ওয়ারেন্টি তালিকা।",
+        lfp_col_sl: "SL No.",
+        lfp_col_model: "মডেল",
+        lfp_col_capacity: "ক্যাপাসিটি",
+        lfp_col_life: "লাইফ সাইকেল",
+        lfp_col_mrp: "MRP",
+        lfp_col_warranty: "ব্যাটারি ওয়ারেন্টি",
+        lifepo4_note: "নোট: কাঁচামালের বাজার দরের পরিবর্তনের কারণে কোম্পানি যে কোনো সময় মূল্য পরিবর্তন করতে পারে।",
+        lifepo4_features_title: "LiFePO4 ব্যাটারি ফিচার",
+        lifepo4_features_list: ["100% Maintenance Free", "100% Safe (LiFePO4) Technology", "Ultra Fast Charging (0%-100%)", "Long Life Performance", "Smart BMS", "Mobile Connectivity", "24/7 Smart Monitoring", "Money Saving Investment", "Water Less Battery", "Modern Battery Technology"],
+        sec_reviews_title: "Reviews",
+        review_1: "\"লোড অনুযায়ী মডেল নেওয়ার পর ব্যাকআপ টাইম অনেক ভালো পেয়েছি।\"",
+        review_2: "\"ইন্সটলেশন সাপোর্ট দ্রুত ছিল, ব্যবহার একদম স্মুথ।\"",
+        review_3: "\"আগের IPS থেকে বিদ্যুৎ খরচ কমেছে এবং সার্ভিসও ভালো।\"",
+        sec_contact_dealer_title: "ডিলার আবেদন",
+        dealer_apply_title: "ডিলার হতে চান?",
+        dealer_apply_desc: "আপনার এলাকায় REMARK IPS ডিলারশিপ নিতে এখনই আবেদন করুন। দ্রুত যাচাই করে আমাদের টিম যোগাযোগ করবে।",
+        dealer_apply_btn: "ডিলার হিসেবে আবেদন করুন",
+        dealer_popup_title: "ডিলার আবেদন ফর্ম",
+        dealer_popup_subtitle: "নিচের তথ্যগুলো পূরণ করলে আপনার ডিলার আবেদন দ্রুত যাচাই করা হবে।",
+        dealer_need_title: "ডিলার হতে যা যা লাগবে",
+        dealer_need_1: "ব্যবসা প্রতিষ্ঠান/শোরুম তথ্য",
+        dealer_need_2: "বৈধ Trade License নম্বর",
+        dealer_need_3: "এলাকা ও ঠিকানা যেখানে ডিলারশিপ চালাবেন",
+        dealer_need_4: "যোগাযোগযোগ্য মোবাইল নম্বর",
+        dealer_lbl_name: "আবেদনকারীর নাম",
+        dealer_lbl_phone: "মোবাইল নম্বর",
+        dealer_lbl_business_name: "প্রতিষ্ঠানের নাম",
+        dealer_lbl_trade_license: "বৈধ Trade License আছে?",
+        dealer_lbl_business_type: "ব্যবসার ধরন",
+        dealer_lbl_district: "জেলা",
+        dealer_lbl_thana: "থানা/উপজেলা",
+        dealer_lbl_experience: "ব্যবসার অভিজ্ঞতা (বছর)",
+        dealer_lbl_investment: "প্রাথমিক বিনিয়োগ ক্ষমতা",
+        dealer_lbl_showroom: "শোরুম আছে?",
+        dealer_lbl_address: "পূর্ণ ঠিকানা",
+        dealer_lbl_note: "অতিরিক্ত তথ্য (ঐচ্ছিক)",
+        dealer_ph_name: "পুরো নাম লিখুন",
+        dealer_ph_phone: "01XXXXXXXXX",
+        dealer_ph_business_name: "আপনার ব্যবসার নাম",
+        dealer_ph_trade_license: "নির্বাচন করুন",
+        dealer_ph_business_type: "নির্বাচন করুন",
+        dealer_ph_district: "জেলা নির্বাচন করুন",
+        dealer_ph_thana: "থানা/উপজেলা নির্বাচন করুন",
+        dealer_ph_experience: "যেমন 3",
+        dealer_ph_investment: "বাজেট নির্বাচন করুন",
+        dealer_ph_showroom: "নির্বাচন করুন",
+        dealer_ph_address: "এলাকা, থানা, জেলা",
+        dealer_ph_note: "শোরুম লোকেশন/বর্তমান ব্র্যান্ড ইত্যাদি",
+        dealer_consent: "আমি দেওয়া তথ্য সঠিক এবং যাচাইয়ের জন্য যোগাযোগে সম্মত।",
+        dealer_submit_btn: "ডিলার আবেদন জমা দিন",
+        dealer_form_err: "সব প্রয়োজনীয় তথ্য পূরণ করুন।",
+        dealer_success_text: "আপনার ডিলার আবেদন গ্রহণ করা হয়েছে।",
+        yes_text: "হ্যাঁ",
+        no_text: "না",
+        see_all_btn: "সব দেখুন",
+        show_preview_btn: "Best 3 দেখুন",
+        sec_calc_title: "Smart Load Calculator",
+        calc_intro: "আপনার চাহিদা অনুযায়ী ক্যালকুলেশন করুন, suggested model দেখুন, তারপর Order Form-এ এগিয়ে যান।",
+        calc_note: "নোট: এটি আনুমানিক হিসাব। বাস্তব ব্যাকআপ সময় লোড, ব্যাটারির অবস্থা ও পরিবেশের ওপর নির্ভর করবে।",
+        sec_contact_title: "Request Verification",
+        submit_btn: "Submit Request",
+        calc_btn: "রেজাল্ট দেখুন",
+        result_title: "আপনার জন্য প্রস্তাবিত মডেল",
+        result_note: "এই মডেলটি আপনার ফর্মে auto-fill হবে।",
+        result_order_btn: "এই মডেল অর্ডার করুন",
+        mobile_calc: "ক্যালকুলেটর",
+        mobile_order: "অর্ডার ফর্ম",
+        mobile_order_now: "অর্ডার করুন",
+        preset_home: "হোম প্রিসেট",
+        preset_office: "অফিস প্রিসেট",
+        preset_shop: "শপ প্রিসেট",
+        lbl_include_smps: "টিভি/পিসি/রাউটার (SMPS লোড) ক্যালকুলেশনে যুক্ত করুন",
+        form_warning: "সকল অর্ডার ফোন ভেরিফিকেশন ছাড়া কনফার্ম করা হয় না।",
+        lbl_fan: "ফ্যান (৭৫W)",
+        lbl_light: "লাইট (২০W)",
+        lbl_tv: "টিভি (১২০W)",
+        lbl_pc: "পিসি (২০০W)",
+        lbl_router: "রাউটার (১২W)",
+        lbl_motor: "মোটর (1HP)",
+        lbl_fridge: "ফ্রিজ (৩০০W)",
+        lbl_battery_size: "ব্যাটারি সাইজ",
+        lbl_backup_hour: "ব্যাকআপ সময় (ঘণ্টা)",
+        lbl_name: "আপনার নাম",
+        lbl_phone: "ফোন নাম্বার",
+        lbl_model: "নির্বাচিত মডেল",
+        lbl_needs_battery: "ব্যাটারি লাগবে?",
+        lbl_battery_model: "ব্যাটারি মডেল",
+        lbl_area: "জেলা",
+        lbl_thana: "থানা/উপজেলা",
+        lbl_callback: "কল ব্যাক সময়",
+        lbl_powercut: "দৈনিক লোডশেডিং (ঘণ্টা)",
+        lbl_address: "ঠিকানা",
+        ph_fan: "যেমন 3",
+        ph_light: "যেমন 8",
+        ph_tv: "যেমন 1",
+        ph_pc: "যেমন 1",
+        ph_router: "যেমন 1",
+        ph_motor: "যেমন 1",
+        ph_fridge: "যেমন 1",
+        ph_backup_hour: "যেমন 2",
+        ph_area: "জেলা নির্বাচন করুন",
+        ph_thana: "থানা/উপজেলা নির্বাচন করুন",
+        ph_callback: "সময় নির্বাচন করুন",
+        cb_morning: "সকাল (১০টা-১টা)",
+        cb_afternoon: "দুপুর (১টা-৫টা)",
+        cb_evening: "সন্ধ্যা (বন্ধ)",
+        ph_powercut: "যেমন 4",
+        ph_name: "পুরো নাম লিখুন",
+        ph_phone: "01XXXXXXXXX",
+        ph_selected_model: "মডেল সিলেক্ট করুন",
+        ph_battery_model: "ব্যাটারি মডেল নির্বাচন করুন",
+        ph_address: "এলাকা, থানা, জেলা",
+        warranty_terms: "ওয়ারেন্টি ও সার্ভিস শর্ত প্রযোজ্য। সঠিক ইনস্টলেশন ও প্রস্তাবিত ব্যাটারি ব্যবহারের উপর পারফরম্যান্স নির্ভরশীল।",
+        consent_text: "আমি তথ্যগুলো সঠিকভাবে প্রদান করেছি এবং <a href=\"terms-and-conditions.html\">Privacy Policy</a>/<a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a> মেনে নিচ্ছি।",
+        contact_l1: "জরুরি যোগাযোগ: <strong>01742-313132</strong>",
+        contact_l2: "ডিলার সাপোর্ট: <strong>01911-223344</strong>",
+        key_features_title: "টেকনিক্যাল ফিচারসমূহ",
+        key_features_list: ["১০০% কপার ট্রান্সফরমার", "জিপ চার্জ টেকনোলজি", "২০০x ব্যাটারি লাইফ", "৯৮% ডিএম ওয়াটার সেভিং টেকনোলজি", "৯৫% দক্ষতা", "ডিএসপি - পিওর সাইন ওয়েভ", "ওভার চার্জ প্রোটেকশন", "ওভার লোড প্রোটেকশন"],
+        perf_title: "সুরক্ষা ও পারফরম্যান্স",
+        perf_list: ["লো ব্যাটারি প্রোটেকশন", "শর্ট সার্কিট প্রোটেকশন", "এয়ার কুলিং", "দীর্ঘস্থায়ী পারফরম্যান্স", "১০০% রিপেয়ারেবল", "কনস্ট্যান্ট ভোল্টেজ", "ইউপিএস মোড ১০ms-২০ms ম্যাক্স", "ইমার্জেন্সি বাজ অ্যালার্ম"],
+        tbl_model: "মডেল",
+        tbl_product: "পণ্য",
+        tbl_capacity: "ক্যাপাসিটি",
+        tbl_watt: "ওয়াট",
+        tbl_sys_volt: "সিস্টেম ভোল্টেজ",
+        tbl_battery: "ব্যাটারি সাপোর্ট",
+        tbl_output: "আউটপুট",
+        tbl_signal: "সিগনাল",
+        tbl_frequency: "ফ্রিকোয়েন্সি",
+        tbl_warranty: "ওয়ারেন্টি",
+        tbl_mrp: "MRP",
+        popup_title: "রিকোয়েস্ট গ্রহণ করা হয়েছে",
+        popup_text: "আমাদের প্রতিনিধি ২৪ ঘণ্টার মধ্যে আপনার সাথে যোগাযোগ করবে।",
+        popup_ref: "রেফারেন্স আইডি: ",
+        popup_close: "বন্ধ করুন",
+        footer_l1: "© 2026 REMARK Technologies. সর্বস্বত্ব সংরক্ষিত।",
+        footer_l2: "ঢাকা, বাংলাদেশ | হটলাইন: 01742-313132",
+        footer_l3: "<a href=\"terms-and-conditions.html\">Privacy Policy</a> | <a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a>",
+        calc_err: "কমপক্ষে একটি ডিভাইস দিন এবং ব্যাকআপ সময় (ঘণ্টা) লিখুন।",
+        result_model: "মডেল: ",
+        result_va: "প্রয়োজনীয় VA: ",
+        result_real_watt: "মোট রিয়েল লোড: ",
+        result_va_safe: "ইনডাক্টিভ সেফটি VA: ",
+        result_battery_ah: "প্রয়োজনীয় ব্যাটারি: ",
+        result_extra_va: "অতিরিক্ত ক্যাপাসিটি: ",
+        result_mrp: "MRP: ",
+        form_err: "সব তথ্য সঠিকভাবে পূরণ করুন।",
+        consent_err: "অর্ডার করতে Terms & Conditions page-এ সম্মতি দিন।",
+        phone_err: "সঠিক ১১ ডিজিটের বাংলাদেশি মোবাইল নম্বর দিন।",
+        spam_err: "ফর্ম সাবমিটে সমস্যা হয়েছে। আবার চেষ্টা করুন।",
+        rate_limit_err: "অনেক দ্রুত সাবমিট করা হয়েছে। ১ মিনিট পর আবার চেষ্টা করুন।",
+        stock_in: "স্টকে আছে",
+        stock_low: "স্টক সীমিত",
+        stock_out: "স্টক শেষ"
+      },
+      en: {
+        brand_tagline: "",
+        nav_home: "Home",
+        nav_problem: "Problem",
+        nav_solution: "Solution",
+        nav_why: "Why Remark",
+        nav_spec: "Specification",
+        nav_pricing: "Pricing",
+        nav_reviews: "Reviews",
+        nav_order: "Order Form",
+        nav_features: "Features",
+        nav_models: "Models",
+        nav_calculator: "Calculator",
+        nav_faq: "FAQ",
+        nav_contact: "Contact",
+        menu_btn: "Menu",
+        hero_tag: "20 years of journey, trusted by customers.",
+        hero_title: "REMARK Inverter<br><span class=\"title-focus\">Pure Sine Wave IPS/UPS</span>",
+        hero_desc: "Stable backup power solution for home, office, shop, or clinic. Calculate your load and find the right model instantly.",
+        hero_offer1: "12-Month Full Warranty",
+        hero_offer2: "36-Month Free Service",
+        special_offer_title: "Special Offer",
+        hero_btn_calc: "Calculate Load",
+        hero_btn_order: "Go To Order Form",
+        hero_badge1: "",
+        hero_badge2: "Pure Sine Wave",
+        hero_badge3: "Nationwide Delivery",
+        hero_points: ["Up to 95% Efficiency", "100% Copper Transformer", "Zip Charge Technology", "Pure Sine Wave Output"],
+        metric_install: "Successful Install",
+        metric_efficiency: "Efficiency Rate",
+        metric_support: "Fast Customer Support",
+        sec_problem_title: "⚡ Is load shedding only an inconvenience, or a source of real loss?",
+        problem_intro: "Are you facing problems like these every day?",
+        problem_p1: "Cannot sleep in heat when the fan stops?",
+        problem_p2: "Food gets spoiled when the fridge shuts down?",
+        problem_p3: "Online work gets interrupted again and again?",
+        problem_p4: "Your child's study routine is getting affected?",
+        problem_note: "But that is not the full problem...",
+        problem_r1: "Wrong VA or low watt IPS will trip repeatedly",
+        problem_r2: "Excess load can damage battery life quickly",
+        problem_r3: "Unstable voltage can risk TV and fridge safety",
+        problem_r4: "Low-capacity inverter overheats and loses performance",
+        problem_r5: "Wrong model means spending money without getting proper backup",
+        problem_scene1: "Power went out at night.",
+        problem_scene2: "You have IPS, but it cannot handle the load.",
+        problem_scene3: "Everything shuts down again.",
+        problem_end: "This is not just annoying - it is a financial loss.<br><br>You may not stop load shedding.<br>But you can avoid the wrong decision.",
+        sec_solution_title: "✅ One practical solution: correct calculation + correct IPS",
+        solution_intro: "REMARK Pure Sine Wave IPS gives not only backup, but stable, safe, and reliable power support.",
+        solution_p1: "✔ 100% Pure Sine Wave - safe for sensitive devices",
+        solution_p2: "✔ Stable voltage output",
+        solution_p3: "✔ Long-lasting battery support",
+        solution_p4: "✔ Multiple VA ranges - from small to heavy load",
+        solution_calc_title: "🧮 Calculate your load yourself",
+        solution_calc_intro: "With our built-in Load Calculator, you can know:",
+        solution_c1: "How much watt is needed for your home",
+        solution_c2: "Which VA model is right for you",
+        solution_c3: "How to avoid unnecessary spending",
+        solution_c4: "How to avoid low-capacity model risks",
+        solution_calc_note: "Enter your fan, light, motor, fridge (and optionally TV/PC/router) count - the system will suggest the right model automatically.",
+        solution_end: "So you can:",
+        solution_e1: "✔ Avoid buying less capacity",
+        solution_e2: "✔ Avoid wasting money on overbuying",
+        solution_e3: "✔ Get the right IPS capacity",
+        sec_features_title: "Why Choose REMARK IPS?",
+        features_intro: "Built for safety, performance, and long-term reliability.",
+        sec_spec_title: "Specification",
+        spec_intro: "Technical features focused on protection, efficiency, and stable output.",
+        core_features_title: "Core Features",
+        core_features: ["100% Copper Transformer", "Zip Charge Technology", "95% Efficiency", "Short Circuit, Over Charge & Over Load Protection"],
+        customer_trust_title: "Customer Trust",
+        trust_points: ["500+ successful installations", "Nationwide delivery", "Trusted dealer network"],
+        support_service_title: "Support & Service",
+        support_points: ["Installation support", "Phone verification for orders", "Fast after-sales support"],
+        sec_models_title: "Pricing & Models",
+        models_intro: "The list below is updated according to your provided sheet.",
+        product_note: "Images are demo placeholders. Share your image links and I will replace them.",
+        sec_lifepo4_title: "REMARK LITHIUM BATTERY (LiFePO4)",
+        lifepo4_intro: "Official REMARK LiFePO4 battery list with model, capacity, MRP, and warranty.",
+        lfp_col_sl: "SL No.",
+        lfp_col_model: "Model",
+        lfp_col_capacity: "Capacity",
+        lfp_col_life: "Life Cycle",
+        lfp_col_mrp: "MRP",
+        lfp_col_warranty: "Battery Warranty",
+        lifepo4_note: "Note: Prices may change any time based on raw material cost and market conditions.",
+        lifepo4_features_title: "LiFePO4 Battery Features",
+        lifepo4_features_list: ["100% Maintenance Free", "100% Safe (LiFePO4) Technology", "Ultra Fast Charging (0%-100%)", "Long Life Performance", "Smart BMS", "Mobile Connectivity", "24/7 Smart Monitoring", "Money Saving Investment", "Water Less Battery", "Modern Battery Technology"],
+        sec_reviews_title: "Reviews",
+        review_1: "\"After selecting based on load, backup time improved significantly.\"",
+        review_2: "\"Installation support was fast and overall use is very smooth.\"",
+        review_3: "\"Compared to my old IPS, power usage is lower and service is better.\"",
+        sec_contact_dealer_title: "Dealer Apply",
+        dealer_apply_title: "Want to become a dealer?",
+        dealer_apply_desc: "Apply now to become a REMARK IPS dealer in your area. Our team will verify and contact you quickly.",
+        dealer_apply_btn: "Apply as Dealer",
+        dealer_popup_title: "Dealer Application Form",
+        dealer_popup_subtitle: "Fill in the details below and our team will review your dealer application quickly.",
+        dealer_need_title: "What you need to become a dealer",
+        dealer_need_1: "Business entity/showroom details",
+        dealer_need_2: "Valid Trade License number",
+        dealer_need_3: "Target area and full business address",
+        dealer_need_4: "Reachable mobile phone number",
+        dealer_lbl_name: "Applicant Name",
+        dealer_lbl_phone: "Mobile Number",
+        dealer_lbl_business_name: "Business Name",
+        dealer_lbl_trade_license: "Valid Trade License Available?",
+        dealer_lbl_business_type: "Business Type",
+        dealer_lbl_district: "District",
+        dealer_lbl_thana: "Thana/Upazila",
+        dealer_lbl_experience: "Business Experience (Years)",
+        dealer_lbl_investment: "Initial Investment Capacity",
+        dealer_lbl_showroom: "Do you have a showroom?",
+        dealer_lbl_address: "Full Address",
+        dealer_lbl_note: "Additional Details (Optional)",
+        dealer_ph_name: "Enter full name",
+        dealer_ph_phone: "01XXXXXXXXX",
+        dealer_ph_business_name: "Your business name",
+        dealer_ph_trade_license: "Select one",
+        dealer_ph_business_type: "Select one",
+        dealer_ph_district: "Select district",
+        dealer_ph_thana: "Select thana/upazila",
+        dealer_ph_experience: "e.g. 3",
+        dealer_ph_investment: "Select budget",
+        dealer_ph_showroom: "Select one",
+        dealer_ph_address: "Area, Thana, District",
+        dealer_ph_note: "Showroom location/current brands etc.",
+        dealer_consent: "I confirm the information is correct and agree to be contacted for verification.",
+        dealer_submit_btn: "Submit Dealer Application",
+        dealer_form_err: "Please complete all required fields.",
+        dealer_success_text: "Your dealer application has been received.",
+        yes_text: "Yes",
+        no_text: "No",
+        see_all_btn: "See All",
+        show_preview_btn: "Show Best 3",
+        sec_calc_title: "Smart Load Calculator",
+        calc_intro: "Calculate by your need, get suggested model, then continue to the order form.",
+        calc_note: "Note: This is an estimated calculation. Actual backup time depends on load, battery condition, and environment.",
+        sec_contact_title: "Request Verification",
+        submit_btn: "Submit Request",
+        calc_btn: "Show Result",
+        result_title: "Recommended Model For You",
+        result_note: "This model will be auto-filled in your form.",
+        result_order_btn: "Order This Model",
+        mobile_calc: "Calculator",
+        mobile_order: "Order Form",
+        mobile_order_now: "Order Now",
+        preset_home: "Home Preset",
+        preset_office: "Office Preset",
+        preset_shop: "Shop Preset",
+        lbl_include_smps: "Include TV/PC/Router (SMPS loads) in calculation",
+        form_warning: "Orders are not confirmed without phone verification.",
+        lbl_fan: "Fan (75W)",
+        lbl_light: "Light (20W)",
+        lbl_tv: "TV (120W)",
+        lbl_pc: "PC (200W)",
+        lbl_router: "Router (12W)",
+        lbl_motor: "Motor (1HP)",
+        lbl_fridge: "Fridge (300W)",
+        lbl_battery_size: "Battery Size",
+        lbl_backup_hour: "Backup Time (Hours)",
+        lbl_name: "Your Name",
+        lbl_phone: "Phone Number",
+        lbl_model: "Selected Model",
+        lbl_needs_battery: "Need Battery?",
+        lbl_battery_model: "Battery Model",
+        lbl_area: "District",
+        lbl_thana: "Thana/Upazila",
+        lbl_callback: "Preferred Callback Time",
+        lbl_powercut: "Daily Power Cut (Hours)",
+        lbl_address: "Address",
+        ph_fan: "e.g. 3",
+        ph_light: "e.g. 8",
+        ph_tv: "e.g. 1",
+        ph_pc: "e.g. 1",
+        ph_router: "e.g. 1",
+        ph_motor: "e.g. 1",
+        ph_fridge: "e.g. 1",
+        ph_backup_hour: "e.g. 2",
+        ph_area: "Select district",
+        ph_thana: "Select thana/upazila",
+        ph_callback: "Select time",
+        cb_morning: "Morning (10am-1pm)",
+        cb_afternoon: "Afternoon (1pm-5pm)",
+        cb_evening: "Evening (closed)",
+        ph_powercut: "e.g. 4",
+        ph_name: "Enter full name",
+        ph_phone: "01XXXXXXXXX",
+        ph_selected_model: "Select a model",
+        ph_battery_model: "Select battery model",
+        ph_address: "Area, Thana, District",
+        warranty_terms: "Warranty and service terms apply. Performance depends on correct installation and recommended battery use.",
+        consent_text: "I confirm the information is correct and agree to the <a href=\"terms-and-conditions.html\">Privacy Policy</a>/<a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a>.",
+        contact_l1: "Urgent Contact: <strong>01742-313132</strong>",
+        contact_l2: "Dealer Support: <strong>01911-223344</strong>",
+        key_features_title: "Technical Features",
+        key_features_list: ["100% Copper Transformer", "Zip Charge Technology", "200x Battery Life", "98% DM Water Saving Technology", "95% Efficiency", "DSP - Pure Sine Wave", "Over Charge Protection", "Over Load Protection"],
+        perf_title: "Protection & Performance",
+        perf_list: ["Low Battery Protection", "Short Circuit Protection", "Air Cooling", "Long Lasting Performance", "100% Repairable", "Constant Voltage", "UPS Mode 10ms-20ms Max", "Emergency Buzz Alarm"],
+        tbl_model: "Model",
+        tbl_product: "Product",
+        tbl_capacity: "Capacity",
+        tbl_watt: "Watt",
+        tbl_sys_volt: "System Voltage",
+        tbl_battery: "Battery Support",
+        tbl_output: "Output",
+        tbl_signal: "Signal",
+        tbl_frequency: "Frequency",
+        tbl_warranty: "Warranty",
+        tbl_mrp: "MRP",
+        popup_title: "Request Received",
+        popup_text: "Our representative will contact you within 24 hours.",
+        popup_ref: "Reference ID: ",
+        popup_close: "Close",
+        footer_l1: "© 2026 REMARK Technologies. All rights reserved.",
+        footer_l2: "Dhaka, Bangladesh | Hotline: 01742-313132",
+        footer_l3: "<a href=\"terms-and-conditions.html\">Privacy Policy</a> | <a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a>",
+        calc_err: "Enter at least one device count and backup hours.",
+        result_model: "Model: ",
+        result_va: "Required VA: ",
+        result_real_watt: "Total Real Load: ",
+        result_va_safe: "Inductive Safety VA: ",
+        result_battery_ah: "Required Battery: ",
+        result_extra_va: "Extra Capacity Available: ",
+        result_mrp: "MRP: ",
+        form_err: "Please complete all required fields.",
+        consent_err: "Please accept the Terms & Conditions page to submit.",
+        phone_err: "Please enter a valid 11-digit Bangladeshi mobile number.",
+        spam_err: "Spam detected. Submission blocked.",
+        rate_limit_err: "Too many attempts. Please wait 1 minute and try again.",
+        stock_in: "In Stock",
+        stock_low: "Low Stock",
+        stock_out: "Out of Stock"
+      }
+    };
+
+    let currentLang = "bn";
+    let showAllProducts = false;
+    let featuredModels = ["RDIN-650DSP", "RDIN-1050DSP", "RDIN-2KDSP"];
+
+    function applyIntegrationTextOverrides() {
+      const legalPath = INTEGRATION_CONFIG.legalPagePath;
+      const hotline = INTEGRATION_CONFIG.contact.hotline;
+      const dealerSupport = INTEGRATION_CONFIG.contact.dealerSupport;
+      const footerAddressBn = INTEGRATION_CONFIG.contact.footerAddressBn;
+      const footerAddressEn = INTEGRATION_CONFIG.contact.footerAddressEn;
+
+      i18n.bn.consent_text = "আমি তথ্যগুলো সঠিকভাবে প্রদান করেছি এবং <a href=\"" + legalPath + "\">Privacy Policy</a>/<a href=\"" + legalPath + "\">Terms &amp; Conditions</a> মেনে নিচ্ছি।";
+      i18n.en.consent_text = "I confirm the information is correct and agree to the <a href=\"" + legalPath + "\">Privacy Policy</a>/<a href=\"" + legalPath + "\">Terms &amp; Conditions</a>.";
+      i18n.bn.footer_l3 = "<a href=\"" + legalPath + "\">Privacy Policy</a> | <a href=\"" + legalPath + "\">Terms &amp; Conditions</a>";
+      i18n.en.footer_l3 = "<a href=\"" + legalPath + "\">Privacy Policy</a> | <a href=\"" + legalPath + "\">Terms &amp; Conditions</a>";
+      i18n.bn.contact_l1 = "জরুরি যোগাযোগ: <strong>" + hotline + "</strong>";
+      i18n.en.contact_l1 = "Urgent Contact: <strong>" + hotline + "</strong>";
+      i18n.bn.contact_l2 = "ডিলার সাপোর্ট: <strong>" + dealerSupport + "</strong>";
+      i18n.en.contact_l2 = "Dealer Support: <strong>" + dealerSupport + "</strong>";
+      i18n.bn.footer_l2 = footerAddressBn + " | হটলাইন: " + hotline;
+      i18n.en.footer_l2 = footerAddressEn + " | Hotline: " + hotline;
+    }
+
+    let tawkWidgetInjected = false;
+
+    function getTawkEmbedUrl() {
+      if (TAWK_CONFIG.enabled === false) return "";
+      if (!TAWK_CONFIG.propertyId || !TAWK_CONFIG.widgetId) return "";
+      if (TAWK_CONFIG.propertyId.indexOf("YOUR_") === 0 || TAWK_CONFIG.widgetId.indexOf("YOUR_") === 0) return "";
+      return "https://embed.tawk.to/" + TAWK_CONFIG.propertyId + "/" + TAWK_CONFIG.widgetId;
+    }
+
+    function loadTawkWidget() {
+      if (tawkWidgetInjected) return true;
+      const embedUrl = getTawkEmbedUrl();
+      if (!embedUrl) return false;
+      window.Tawk_API = window.Tawk_API || {};
+      window.Tawk_LoadStart = new Date();
+      const script = document.createElement("script");
+      script.async = true;
+      script.src = embedUrl;
+      script.charset = "UTF-8";
+      script.setAttribute("crossorigin", "*");
+      document.head.appendChild(script);
+      tawkWidgetInjected = true;
+      return true;
+    }
+
+    function openLiveSupport() {
+      trackEvent("live_support_click", { source: "floating_button" });
+      if (window.Tawk_API && typeof window.Tawk_API.maximize === "function") {
+        window.Tawk_API.maximize();
+        return;
+      }
+
+      const loaded = loadTawkWidget();
+      if (!loaded) {
+        console.warn("Set TAWK_CONFIG.propertyId and TAWK_CONFIG.widgetId before using Live Support.");
+        return;
+      }
+
+      setTimeout(() => {
+        if (window.Tawk_API && typeof window.Tawk_API.maximize === "function") {
+          window.Tawk_API.maximize();
+        }
+      }, 900);
+    }
+
+    // === UPDATED ===
+    const LAST_CALC_CONTEXT = {
+      requiredVA: 0,
+      backupHour: 0,
+      highValue: false,
+      model: ""
+    };
+
+    const AB_VARIANTS = {
+      A: {},
+      B: {
+        bn: {
+          hero_desc: "লোডশেডিংয়ের ঝামেলা ছাড়াই ঘরে স্থিতিশীল পাওয়ার পেতে আজই সঠিক মডেল হিসাব করুন।",
+          special_offer_title: "আজকের বিশেষ অফার"
+        },
+        en: {
+          hero_desc: "Get stable backup power without load shedding pain by calculating the right IPS model now.",
+          special_offer_title: "Today's Special Offer"
+        }
+      }
+    };
+
+    function tr(key) {
+      return i18n[currentLang][key] || key;
+    }
+
+    function renderList(id, items) {
+      const el = document.getElementById(id);
+      if (!el || !Array.isArray(items)) return;
+      el.innerHTML = items.map((item) => "<li>" + item + "</li>").join("");
+    }
+
+    function renderModelOptions(lang) {
+      const selectedModel = document.getElementById("selectedModel");
+      if (!selectedModel) return;
+      const current = selectedModel.value;
+      const optionLabel = i18n[lang].ph_selected_model;
+      selectedModel.innerHTML = "<option value=\"\">" + optionLabel + "</option>" +
+        modelCatalog.map((item) => "<option value=\"" + item.model + "\">" + item.model + " (" + i18n[lang].result_mrp + item.price + ")</option>").join("");
+      if (current) selectedModel.value = current;
+    }
+
+    function renderBatteryOptions(lang) {
+      const batteryModel = document.getElementById("batteryModel");
+      if (!batteryModel) return;
+      const current = batteryModel.value;
+      batteryModel.innerHTML = "<option value=\"\">" + i18n[lang].ph_battery_model + "</option>" +
+        lifepo4Catalog.map((item) => "<option value=\"" + item.model + "\">" + item.model + " (" + item.mrp + ")</option>").join("");
+      if (current) batteryModel.value = current;
+    }
+
+    function getSelectedModelMrp(modelLabel) {
+      const model = modelCatalog.find((item) => item.model === modelLabel);
+      return model ? model.price : "";
+    }
+
+    function updateSelectedModelPrice() {
+      const label = document.getElementById("selectedModel").value;
+      const priceNode = document.getElementById("selectedModelPrice");
+      if (!priceNode) return;
+      const mrp = getSelectedModelMrp(label);
+      priceNode.textContent = mrp ? (tr("result_mrp") + mrp) : "";
+    }
+
+    function toggleBatteryModelField() {
+      const needsBattery = document.getElementById("needsBattery");
+      const batteryWrap = document.getElementById("batteryModelWrap");
+      const batteryModel = document.getElementById("batteryModel");
+      if (!needsBattery || !batteryWrap || !batteryModel) return;
+      const show = needsBattery.value === "yes";
+      batteryWrap.classList.toggle("hidden", !show);
+      batteryModel.disabled = !show;
+      if (!show) {
+        batteryModel.value = "";
+        setFieldInvalidState("batteryModel", false);
+      }
+    }
+
+    // === ADDED ===
+    const BD_GEO_ENDPOINTS = {
+      districts: "https://bdapis.vercel.app/geo/v2.0/districts",
+      upazilas: "https://bdapis.vercel.app/geo/v2.0/upazilas"
+    };
+    const BD_GEO_STATE = {
+      districts: [],
+      upazilasByDistrict: {},
+      loadPromise: null
+    };
+
+    function getLocalizedGeoName(item, lang) {
+      if (!item) return "";
+      if (lang === "bn" && item.nameBn) return item.nameBn;
+      return item.nameEn || item.nameBn || "";
+    }
+
+    function pickGeoField(item, keys) {
+      for (let i = 0; i < keys.length; i += 1) {
+        const value = item[keys[i]];
+        if (value !== undefined && value !== null && String(value).trim() !== "") return String(value).trim();
+      }
+      return "";
+    }
+
+    function normalizeGeoKey(value) {
+      return String(value || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+    }
+
+    function normalizeGeoList(json) {
+      if (Array.isArray(json)) return json;
+      if (!json || typeof json !== "object") return [];
+      if (Array.isArray(json.data)) return json.data;
+      if (Array.isArray(json.result)) return json.result;
+      if (Array.isArray(json.results)) return json.results;
+      if (Array.isArray(json.items)) return json.items;
+      return [];
+    }
+
+    function resetDependentThana(selectId, placeholderKey) {
+      const select = document.getElementById(selectId);
+      if (!select) return;
+      select.innerHTML = "<option value=\"\">" + tr(placeholderKey) + "</option>";
+      select.disabled = true;
+    }
+
+    function renderDistrictOptions(selectId, placeholderKey, selectedId) {
+      const select = document.getElementById(selectId);
+      if (!select) return;
+      const options = ["<option value=\"\">" + tr(placeholderKey) + "</option>"];
+      BD_GEO_STATE.districts.forEach((district) => {
+        options.push("<option value=\"" + district.id + "\">" + getLocalizedGeoName(district, currentLang) + "</option>");
+      });
+      select.innerHTML = options.join("");
+      if (selectedId) select.value = selectedId;
+    }
+
+    function renderThanaOptions(selectId, districtId, placeholderKey, selectedId) {
+      const select = document.getElementById(selectId);
+      if (!select) return;
+      const list = districtId ? (BD_GEO_STATE.upazilasByDistrict[districtId] || []) : [];
+      const options = ["<option value=\"\">" + tr(placeholderKey) + "</option>"];
+      list.forEach((thana) => {
+        options.push("<option value=\"" + thana.id + "\">" + getLocalizedGeoName(thana, currentLang) + "</option>");
+      });
+      select.innerHTML = options.join("");
+      select.disabled = !list.length;
+      if (selectedId) select.value = selectedId;
+    }
+
+    function getSelectedOptionText(id) {
+      const select = document.getElementById(id);
+      if (!select || select.selectedIndex < 0) return "";
+      return (select.options[select.selectedIndex] && select.options[select.selectedIndex].textContent || "").trim();
+    }
+
+    function syncLocationLanguageOptions() {
+      const leadDistrictId = document.getElementById("area") ? document.getElementById("area").value : "";
+      const leadThanaId = document.getElementById("thana") ? document.getElementById("thana").value : "";
+      const dealerDistrictId = document.getElementById("dealerDistrict") ? document.getElementById("dealerDistrict").value : "";
+      const dealerThanaId = document.getElementById("dealerThana") ? document.getElementById("dealerThana").value : "";
+
+      renderDistrictOptions("area", "ph_area", leadDistrictId);
+      renderDistrictOptions("dealerDistrict", "dealer_ph_district", dealerDistrictId);
+      renderThanaOptions("thana", leadDistrictId, "ph_thana", leadThanaId);
+      renderThanaOptions("dealerThana", dealerDistrictId, "dealer_ph_thana", dealerThanaId);
+    }
+
+    async function loadBangladeshGeoOptions() {
+      if (BD_GEO_STATE.loadPromise) return BD_GEO_STATE.loadPromise;
+
+      BD_GEO_STATE.loadPromise = Promise.all([
+        fetch(BD_GEO_ENDPOINTS.districts).then((res) => res.json()),
+        fetch(BD_GEO_ENDPOINTS.upazilas).then((res) => res.json())
+      ]).then((results) => {
+        const districtsRaw = normalizeGeoList(results[0]);
+        const upazilasRaw = normalizeGeoList(results[1]);
+        const districtById = {};
+        const districtByKey = {};
+
+        BD_GEO_STATE.districts = districtsRaw.map((item) => {
+          const district = {
+            id: pickGeoField(item, ["id", "district_id", "districtId", "code", "value", "name"]),
+            nameEn: pickGeoField(item, ["name", "name_en", "district", "district_name"]),
+            nameBn: pickGeoField(item, ["bn_name", "name_bn", "bengali", "district_bn"])
+          };
+          districtById[district.id] = district.id;
+          districtByKey[normalizeGeoKey(district.id)] = district.id;
+          districtByKey[normalizeGeoKey(district.nameEn)] = district.id;
+          districtByKey[normalizeGeoKey(district.nameBn)] = district.id;
+          return district;
+        }).filter((d) => d.id && (d.nameEn || d.nameBn)).sort((a, b) => (a.nameEn || a.nameBn).localeCompare(b.nameEn || b.nameBn));
+
+        BD_GEO_STATE.upazilasByDistrict = {};
+        BD_GEO_STATE.districts.forEach((district) => {
+          BD_GEO_STATE.upazilasByDistrict[district.id] = [];
+        });
+
+        upazilasRaw.forEach((item) => {
+          const rawDistrict = pickGeoField(item, ["district_id", "districtId", "district", "district_name"]);
+          const districtId = districtById[rawDistrict] || districtByKey[normalizeGeoKey(rawDistrict)] || "";
+          if (!districtId || !BD_GEO_STATE.upazilasByDistrict[districtId]) return;
+
+          const upazila = {
+            id: pickGeoField(item, ["id", "upazila_id", "upazilaId", "code", "value", "name"]),
+            nameEn: pickGeoField(item, ["name", "name_en", "upazila", "upazila_name", "thana"]),
+            nameBn: pickGeoField(item, ["bn_name", "name_bn", "bengali", "upazila_bn"])
+          };
+          if (!upazila.id || (!upazila.nameEn && !upazila.nameBn)) return;
+          BD_GEO_STATE.upazilasByDistrict[districtId].push(upazila);
+        });
+
+        Object.keys(BD_GEO_STATE.upazilasByDistrict).forEach((districtId) => {
+          BD_GEO_STATE.upazilasByDistrict[districtId].sort((a, b) => (a.nameEn || a.nameBn).localeCompare(b.nameEn || b.nameBn));
+        });
+
+        syncLocationLanguageOptions();
+      }).catch((error) => {
+        console.error("Location data load failed:", error);
+      });
+
+      return BD_GEO_STATE.loadPromise;
+    }
+
+    function getTrackingContext() {
+      return {
+        ab_variant: getABVariant(),
+        language: currentLang,
+        path: window.location.pathname
+      };
+    }
+
+    function trackEvent(eventName, payload) {
+      const mergedPayload = Object.assign({}, getTrackingContext(), payload || {});
+      if (typeof window.gtag === "function") {
+        window.gtag("event", eventName, mergedPayload);
+      }
+      if (typeof window.fbq === "function") {
+        window.fbq("trackCustom", eventName, mergedPayload);
+      }
+    }
+
+    const TRACKING_STATE = {
+      scroll50Tracked: false,
+      scroll90Tracked: false,
+      engagedTracked: false,
+      calculatorStarted: false,
+      calculateRuns: 0
+    };
+
+    function initializeTracking() {
+      if (APP_CONFIG.ga4MeasurementId) {
+        const gaScript = document.createElement("script");
+        gaScript.async = true;
+        gaScript.src = "https://www.googletagmanager.com/gtag/js?id=" + APP_CONFIG.ga4MeasurementId;
+        document.head.appendChild(gaScript);
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+        window.gtag("js", new Date());
+        window.gtag("config", APP_CONFIG.ga4MeasurementId);
+      }
+
+      if (APP_CONFIG.metaPixelId) {
+        window.fbq = window.fbq || function () {
+          (window.fbq.q = window.fbq.q || []).push(arguments);
+        };
+        window.fbq("init", APP_CONFIG.metaPixelId);
+        window.fbq("track", "PageView");
+      }
+    }
+
+    function getABVariant() {
+      const key = "remark_ab_variant";
+      const stored = localStorage.getItem(key);
+      if (stored) return stored;
+      const picked = Math.random() < 0.5 ? "A" : "B";
+      localStorage.setItem(key, picked);
+      return picked;
+    }
+
+    function resolveProductImage(url) {
+      if (!url || url.indexOf("placehold.co") !== -1) return INTEGRATION_CONFIG.fallbackProductImage;
+      return url;
+    }
+
+    function getFeaturedProducts() {
+      return featuredModels.map((model) => productCatalog.find((item) => item.model === model)).filter(Boolean);
+    }
+
+    function renderProductCard(p, lang, cap, watt, battery, mrp) {
+      const title = lang === "bn" ? p.typeBn : p.typeEn;
+      const stockKey = getStockStatus(p.stock_count || 0);
+      const stockText = i18n[lang]["stock_" + stockKey] || i18n[lang].stock_in;
+      const stockClass = stockKey === "low" ? " low" : stockKey === "out" ? " out" : "";
+      const imgSrc = resolveProductImage(p.img);
+      return "<article class=\"product-card\">" +
+        "<img src=\"" + imgSrc + "\" alt=\"" + p.model + "\" loading=\"lazy\" decoding=\"async\">" +
+        "<div class=\"product-body\">" +
+        "<p class=\"product-model\">" + p.model + "</p>" +
+        "<span class=\"stock-badge" + stockClass + "\">" + stockText + "</span>" +
+        "<p class=\"product-name\">" + title + "</p>" +
+        "<ul class=\"product-specs\">" +
+        "<li><strong>" + cap + ":</strong> " + p.capacity + "</li>" +
+        "<li><strong>" + watt + ":</strong> " + p.watt + "</li>" +
+        "<li><strong>" + battery + ":</strong> " + p.battery + "</li>" +
+        "</ul>" +
+        "<p class=\"product-price\">" + mrp + ": " + p.price + "</p>" +
+        "</div></article>";
+    }
+
+    function updateProductActions(lang) {
+      const toggleBtn = document.getElementById("toggleAllBtn");
+      if (!toggleBtn) return;
+      toggleBtn.textContent = showAllProducts ? i18n[lang].show_preview_btn : i18n[lang].see_all_btn;
+    }
+
+    function setBestProductsByClientChoice(selectedModel) {
+      const modelCode = (selectedModel || "").split(" ")[0];
+      if (!modelCode) return;
+      const dspProducts = productCatalog.filter((item) => item.model.indexOf("DSP") !== -1);
+      const pickedIndex = dspProducts.findIndex((item) => item.model === modelCode);
+      if (pickedIndex === -1) return;
+
+      let start = Math.max(0, pickedIndex - 1);
+      if (start + 3 > dspProducts.length) start = Math.max(0, dspProducts.length - 3);
+      featuredModels = dspProducts.slice(start, start + 3).map((item) => item.model);
+    }
+
+    function renderProducts(lang) {
+      const grid = document.getElementById("productGrid");
+      if (!grid) return;
+      const cap = i18n[lang].tbl_capacity;
+      const watt = i18n[lang].tbl_watt;
+      const battery = i18n[lang].tbl_battery;
+      const mrp = i18n[lang].tbl_mrp;
+      const source = showAllProducts ? productCatalog : getFeaturedProducts();
+      grid.innerHTML = source.map((p) => renderProductCard(p, lang, cap, watt, battery, mrp)).join("");
+      updateProductActions(lang);
+    }
+
+    function renderLifepo4Table(lang) {
+      const body = document.getElementById("lifepo4TableBody");
+      if (!body) return;
+      const colSl = i18n[lang].lfp_col_sl;
+      const colModel = i18n[lang].lfp_col_model;
+      const colCapacity = i18n[lang].lfp_col_capacity;
+      const colLife = i18n[lang].lfp_col_life;
+      const colMrp = i18n[lang].lfp_col_mrp;
+      const colWarranty = i18n[lang].lfp_col_warranty;
+      body.innerHTML = lifepo4Catalog.map((item, index) =>
+        "<tr>" +
+        "<td data-label=\"" + colSl + "\">" + (index + 1) + "</td>" +
+        "<td data-label=\"" + colModel + "\">" + item.model + "</td>" +
+        "<td data-label=\"" + colCapacity + "\">" + item.capacity + "</td>" +
+        "<td data-label=\"" + colLife + "\">" + item.lifeCycle + "</td>" +
+        "<td data-label=\"" + colMrp + "\">" + item.mrp + "</td>" +
+        "<td data-label=\"" + colWarranty + "\">" + item.warranty + "</td>" +
+        "</tr>"
+      ).join("");
+    }
+
+    function toggleAllProducts() {
+      showAllProducts = !showAllProducts;
+      renderProducts(currentLang);
+    }
+
+    function loadHeroVideoFromConfig() {
+      const frame = document.getElementById("heroVideoFrame");
+      if (!frame || !HERO_VIDEO_URL || HERO_VIDEO_URL.indexOf("VIDEO_ID") !== -1) return;
+      frame.src = HERO_VIDEO_URL;
+    }
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang === "en" ? "en" : "bn";
+      document.querySelectorAll("[data-i18n]").forEach((node) => {
+        const key = node.dataset.i18n;
+        if (i18n[lang][key]) node.textContent = i18n[lang][key];
+      });
+
+      document.getElementById("heroTitle").innerHTML = i18n[lang].hero_title;
+      document.getElementById("heroDesc").textContent = i18n[lang].hero_desc;
+      document.getElementById("problemIntro").textContent = i18n[lang].problem_intro;
+      document.querySelector(".problem-end").innerHTML = i18n[lang].problem_end;
+      document.getElementById("featuresIntro").textContent = i18n[lang].features_intro;
+      document.getElementById("modelsIntro").textContent = i18n[lang].models_intro;
+      document.getElementById("productNote").textContent = i18n[lang].product_note;
+      document.getElementById("calcIntro").textContent = i18n[lang].calc_intro;
+      document.getElementById("calcNote").textContent = i18n[lang].calc_note;
+      document.getElementById("resultNote").textContent = i18n[lang].result_note;
+      document.getElementById("offer1").textContent = i18n[lang].hero_offer1;
+      document.getElementById("offer2").textContent = i18n[lang].hero_offer2;
+      document.getElementById("offerTitle").textContent = i18n[lang].special_offer_title;
+      document.getElementById("heroCalcBtn").textContent = i18n[lang].hero_btn_calc;
+      document.getElementById("heroOrderBtn").textContent = i18n[lang].hero_btn_order;
+      document.getElementById("submitBtn").textContent = i18n[lang].submit_btn;
+      document.getElementById("calcBtn").textContent = i18n[lang].calc_btn;
+      document.getElementById("resultTitle").textContent = i18n[lang].result_title;
+      document.getElementById("mobileOrderBtn").textContent = i18n[lang].mobile_order_now;
+      document.getElementById("formWarning").textContent = i18n[lang].form_warning;
+      document.getElementById("consentText").innerHTML = i18n[lang].consent_text;
+      document.getElementById("popupTitle").textContent = i18n[lang].popup_title;
+      document.getElementById("popupText").textContent = i18n[lang].popup_text;
+      document.getElementById("popupRef").textContent = "";
+      document.getElementById("popupCloseBtn").textContent = i18n[lang].popup_close;
+      document.getElementById("footerLine1").textContent = i18n[lang].footer_l1;
+      document.getElementById("footerLine2").textContent = i18n[lang].footer_l2;
+      document.getElementById("footerLine3").innerHTML = i18n[lang].footer_l3;
+
+      renderList("heroPoints", i18n[lang].hero_points);
+      renderList("coreFeaturesList", i18n[lang].core_features);
+      renderList("trustList", i18n[lang].trust_points);
+      renderList("supportList", i18n[lang].support_points);
+      renderList("keyList1", i18n[lang].key_features_list);
+      renderList("keyList2", i18n[lang].perf_list);
+      renderList("lifepo4FeaturesList", i18n[lang].lifepo4_features_list);
+      renderModelOptions(lang);
+      renderBatteryOptions(lang);
+      syncLocationLanguageOptions();
+      renderProducts(lang);
+      renderLifepo4Table(lang);
+      applyABCopy(lang);
+      updateSelectedModelPrice();
+      toggleBatteryModelField();
+
+      document.querySelectorAll("[data-ph]").forEach((node) => {
+        const key = node.dataset.ph;
+        if (i18n[lang][key]) node.placeholder = i18n[lang][key];
+      });
+
+      document.querySelectorAll(".lang-btn").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.lang === lang);
+      });
+    }
+
+    function scrollToCalculator() {
+      document.getElementById("calculator").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function goToOrderForm() {
+      trackEvent("order_form_view", { source: "goToOrderForm" });
+      document.getElementById("order").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function resetDealerFormState() {
+      const formWrap = document.getElementById("dealerForm");
+      const successWrap = document.getElementById("dealerSuccessWrap");
+      const err = document.getElementById("dealerFormError");
+      const dealerRef = document.getElementById("dealerPopupRef");
+      const inputIds = [
+        "dealerApplicantName",
+        "dealerApplicantPhone",
+        "dealerBusinessName",
+        "dealerTradeLicenseStatus",
+        "dealerBusinessType",
+        "dealerDistrict",
+        "dealerThana",
+        "dealerExperience",
+        "dealerInvestment",
+        "dealerShowroom",
+        "dealerAddress",
+        "dealerNote",
+        "dealerWebsite"
+      ];
+      if (formWrap) formWrap.style.display = "block";
+      if (successWrap) successWrap.style.display = "none";
+      if (err) err.textContent = "";
+      if (dealerRef) dealerRef.textContent = "";
+      inputIds.forEach((id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.value = "";
+      });
+      const consent = document.getElementById("dealerConsent");
+      if (consent) consent.checked = false;
+    }
+
+    function openDealerApplyPopup() {
+      const popup = document.getElementById("dealerPopup");
+      if (!popup) return;
+      resetDealerFormState();
+      popup.style.display = "flex";
+    }
+
+    function closeDealerApplyPopup() {
+      const popup = document.getElementById("dealerPopup");
+      if (!popup) return;
+      popup.style.display = "none";
+    }
+
+    function applyPreset(type) {
+      const presetMap = {
+        home: { fan: 3, light: 6, motor: 0, fridge: 1, backupHour: 2, tv: 1, pc: 0, router: 1 },
+        office: { fan: 4, light: 12, motor: 0, fridge: 1, backupHour: 3, tv: 1, pc: 3, router: 2 },
+        shop: { fan: 2, light: 10, motor: 1, fridge: 1, backupHour: 2, tv: 1, pc: 1, router: 1 }
+      };
+      const picked = presetMap[type];
+      if (!picked) return;
+      document.getElementById("fan").value = picked.fan;
+      document.getElementById("light").value = picked.light;
+      document.getElementById("motor").value = picked.motor;
+      document.getElementById("fridge").value = picked.fridge;
+      document.getElementById("backupHour").value = picked.backupHour;
+      document.getElementById("tv").value = picked.tv;
+      document.getElementById("pc").value = picked.pc;
+      document.getElementById("router").value = picked.router;
+      document.getElementById("includeSmpsLoads").checked = true;
+      calculateLoad();
+      trackEvent("preset_applied", { preset: type });
+    }
+
+    function toggleSmpsFields() {
+      const enabled = document.getElementById("includeSmpsLoads").checked;
+      ["tv", "pc", "router"].forEach((id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.disabled = !enabled;
+        if (!enabled) el.value = "0";
+      });
+    }
+
+    function applyABCopy(lang) {
+      const variant = getABVariant();
+      if (variant !== "B") return;
+      const v = AB_VARIANTS.B[lang];
+      if (!v) return;
+      if (v.hero_desc) document.getElementById("heroDesc").textContent = v.hero_desc;
+      if (v.special_offer_title) document.getElementById("offerTitle").textContent = v.special_offer_title;
+    }
+
+    // === ADDED ===
+    function isGoogleScriptEndpoint(url) {
+      return /script\.google\.com\/macros\/s\//i.test(String(url || ""));
+    }
+
+    function toFormUrlEncoded(payload) {
+      const params = new URLSearchParams();
+      Object.keys(payload || {}).forEach((key) => {
+        const value = payload[key];
+        if (value === undefined || value === null) return;
+        if (typeof value === "object") {
+          params.append(key, JSON.stringify(value));
+          return;
+        }
+        params.append(key, String(value));
+      });
+      return params.toString();
+    }
+
+    async function fetchWithTimeout(url, options, timeoutMs) {
+      const controller = new AbortController();
+      const timer = window.setTimeout(() => controller.abort(), timeoutMs || 6000);
+      try {
+        return await fetch(url, Object.assign({}, options, { signal: controller.signal }));
+      } finally {
+        window.clearTimeout(timer);
+      }
+    }
+
+    async function sendToBackend(endpoint, payload) {
+      if (!endpoint) return null;
+      const isGas = isGoogleScriptEndpoint(endpoint);
+
+      if (isGas) {
+        try {
+          await fetchWithTimeout(endpoint, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+            body: toFormUrlEncoded(payload)
+          }, 5000);
+          return { ok: true, queued: true, mode: "gas_form" };
+        } catch (error) {
+          console.error("GAS form submit failed:", error);
+        }
+      }
+
+      try {
+        const response = await fetchWithTimeout(endpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        }, 6000);
+        let data = null;
+        try {
+          data = await response.json();
+        } catch (_) {
+          data = null;
+        }
+        if (response.ok) return { ok: true, data: data };
+
+        if (isGas) {
+          await fetchWithTimeout(endpoint, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body: JSON.stringify(payload)
+          }, 5000);
+          return { ok: true, queued: true, data: null };
+        }
+        return { ok: false, data: data };
+      } catch (error) {
+        if (isGas) {
+          try {
+            await fetchWithTimeout(endpoint, {
+              method: "POST",
+              mode: "no-cors",
+              headers: { "Content-Type": "text/plain;charset=utf-8" },
+              body: JSON.stringify(payload)
+            }, 5000);
+            return { ok: true, queued: true, data: null };
+          } catch (_) {
+            console.error("API Error:", error);
+            return null;
+          }
+        }
+        console.error("API Error:", error);
+        return null;
+      }
+    }
+
+    async function sendLeadData(payload) {
+      const targets = [APP_CONFIG.leadApiEndpoint, APP_CONFIG.googleSheetWebhook].filter(Boolean);
+      if (!targets.length) return { ok: true, skipped: true };
+
+      const responses = await Promise.all(targets.map((url) => sendToBackend(url, payload)));
+
+      const ok = responses.some((res) => res && res.ok);
+      return { ok: ok };
+    }
+
+    // === ADDED ===
+    async function sendDealerData(payload) {
+      try {
+        return await sendToBackend(APP_CONFIG.dealerApiEndpoint || APP_CONFIG.leadApiEndpoint, payload);
+      } catch (error) {
+        console.error("Dealer API Error:", error);
+        return null;
+      }
+    }
+
+    function parseCount(id) {
+      const value = Number(document.getElementById(id).value);
+      return Number.isFinite(value) && value > 0 ? value : 0;
+    }
+
+    // === ADDED ===
+    function setFieldInvalidState(id, invalid) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.toggle("invalid-field", Boolean(invalid));
+    }
+
+    function clearInvalidState(ids) {
+      ids.forEach((id) => setFieldInvalidState(id, false));
+    }
+
+    function validateRequiredFields(requiredDefs) {
+      let firstInvalid = null;
+      requiredDefs.forEach((def) => {
+        const id = def.id;
+        const type = def.type || "text";
+        const el = document.getElementById(id);
+        if (!el) return;
+        const invalid = type === "checkbox" ? !el.checked : !String(el.value || "").trim();
+        setFieldInvalidState(id, invalid);
+        if (!firstInvalid && invalid) firstInvalid = el;
+      });
+
+      if (firstInvalid) {
+        firstInvalid.scrollIntoView({ behavior: "smooth", block: "center" });
+        window.setTimeout(() => firstInvalid.focus(), 120);
+      }
+      return !firstInvalid;
+    }
+
+    function bindFormRealtimeValidation(formId) {
+      const form = document.getElementById(formId);
+      if (!form) return;
+      form.querySelectorAll("input, select, textarea").forEach((el) => {
+        const clear = () => el.classList.remove("invalid-field");
+        el.addEventListener("input", clear);
+        el.addEventListener("change", clear);
+      });
+    }
+
+    // === ADDED ===
+    function parseVAFromModel(modelLabel) {
+      const text = String(modelLabel || "");
+      const kvaMatch = text.match(/(\d+(?:\.\d+)?)\s*KVA/i);
+      if (kvaMatch) return Math.round(Number(kvaMatch[1]) * 1000);
+      const vaMatch = text.match(/(\d+(?:\.\d+)?)\s*VA/i);
+      if (vaMatch) return Math.round(Number(vaMatch[1]));
+      return 0;
+    }
+
+    // === ADDED ===
+    function isHighValueLead(modelLabel, requiredVA) {
+      const fromRequired = Number(requiredVA) || 0;
+      if (fromRequired >= 2000) return true;
+      const fromModel = parseVAFromModel(modelLabel);
+      return fromModel >= 2000;
+    }
+
+    function calculateLoad() {
+      TRACKING_STATE.calculateRuns += 1;
+      if (TRACKING_STATE.calculateRuns > 1) {
+        trackEvent("recalculate_detected", { run_count: TRACKING_STATE.calculateRuns });
+      }
+
+      const calcError = document.getElementById("calcError");
+      calcError.textContent = "";
+
+      const fan = parseCount("fan") * 75;
+      const light = parseCount("light") * 20;
+      const motor = parseCount("motor") * 750;
+      const fridge = parseCount("fridge") * 300;
+      const includeSmps = document.getElementById("includeSmpsLoads").checked;
+      const tv = includeSmps ? parseCount("tv") * 120 : 0;
+      const pc = includeSmps ? parseCount("pc") * 200 : 0;
+      const router = includeSmps ? parseCount("router") * 12 : 0;
+      const totalWatt = fan + light + motor + fridge + tv + pc + router;
+      const backupHour = Number(document.getElementById("backupHour").value || 0);
+
+      if (totalWatt <= 0 || !Number.isFinite(backupHour) || backupHour <= 0) {
+        document.getElementById("resultBox").style.display = "none";
+        calcError.textContent = tr("calc_err");
+        return;
+      }
+
+      const totalRequiredVA = Math.ceil((fan * 2) + (fridge * 2) + (motor * 2.5) + light + tv + pc + router);
+      const matched = calculatorCatalog.find((item) => totalRequiredVA <= item.va) || calculatorCatalog[calculatorCatalog.length - 1];
+      const requiredBatteryAh = Math.ceil((totalWatt * backupHour) / (12 * 0.8));
+      const extraCapacity = Math.max(0, matched.va - totalRequiredVA);
+      const isHighValue = totalRequiredVA >= 2000;
+
+      // === UPDATED ===
+      LAST_CALC_CONTEXT.requiredVA = totalRequiredVA;
+      LAST_CALC_CONTEXT.backupHour = backupHour;
+      LAST_CALC_CONTEXT.highValue = isHighValue;
+      LAST_CALC_CONTEXT.model = matched.model;
+
+      setBestProductsByClientChoice(matched.model);
+      if (!showAllProducts) renderProducts(currentLang);
+
+      document.getElementById("modelName").textContent = tr("result_model") + matched.model;
+      document.getElementById("realLoad").textContent = tr("result_real_watt") + totalWatt + " W";
+      document.getElementById("requiredVA").textContent = tr("result_va_safe") + totalRequiredVA + " VA";
+      document.getElementById("batteryNeed").textContent = tr("result_battery_ah") + requiredBatteryAh + " Ah";
+      document.getElementById("extraCapacity").textContent = tr("result_extra_va") + extraCapacity + " VA";
+      document.getElementById("modelPrice").textContent = tr("result_mrp") + matched.price;
+      document.getElementById("selectedModel").value = matched.model;
+      updateSelectedModelPrice();
+      document.getElementById("resultBox").style.display = "block";
+      trackEvent("calculator_result", {
+        model: matched.model,
+        required_va: totalRequiredVA,
+        total_watt: totalWatt,
+        backup_hour: backupHour,
+        required_battery_ah: requiredBatteryAh,
+        extra_capacity_va: extraCapacity,
+        include_smps_loads: includeSmps
+      });
+      if (isHighValue) {
+        trackEvent("high_value_interest", {
+          model: matched.model,
+          required_va: totalRequiredVA,
+          total_watt: totalWatt
+        });
+      }
+    }
+
+    // === UPDATED ===
+    async function submitLeadForm(e) {
+      if (e && typeof e.preventDefault === "function") e.preventDefault();
+      const formError = document.getElementById("formError");
+      formError.textContent = "";
+      clearInvalidState(["name", "phone", "address", "selectedModel", "needsBattery", "batteryModel", "area", "thana", "callbackTime", "consentCheck"]);
+
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const address = document.getElementById("address").value.trim();
+      const model = document.getElementById("selectedModel").value.trim();
+      const needsBattery = document.getElementById("needsBattery").value.trim() || "no";
+      const batteryModel = document.getElementById("batteryModel").value.trim();
+      const areaDistrictId = document.getElementById("area").value.trim();
+      const areaThanaId = document.getElementById("thana").value.trim();
+      const area = getSelectedOptionText("area");
+      const thana = getSelectedOptionText("thana");
+      const callbackTime = document.getElementById("callbackTime").value.trim();
+      const powerCutHour = document.getElementById("powerCutHour").value.trim();
+      const consent = document.getElementById("consentCheck").checked;
+      const honeypot = document.getElementById("website").value.trim();
+      const now = Date.now();
+      const lastSubmitAt = Number(localStorage.getItem("remark_last_submit_at") || 0);
+      const invalidPhone = !/^01\d{9}$/.test(phone);
+      const rateLimited = Boolean(lastSubmitAt && now - lastSubmitAt < APP_CONFIG.leadRateLimitMs);
+      const suspicious = Boolean(honeypot || invalidPhone || rateLimited);
+      const highValue = isHighValueLead(model, LAST_CALC_CONTEXT.requiredVA);
+      const backupHour = Number(document.getElementById("backupHour").value || LAST_CALC_CONTEXT.backupHour || 0);
+
+      trackEvent("lead_submit_attempt", {
+        model: model || "",
+        needs_battery: needsBattery,
+        battery_model: batteryModel || "",
+        area: [area, thana].filter(Boolean).join(", "),
+        callback_time: callbackTime || "",
+        high_value: highValue,
+        suspicious: suspicious
+      });
+
+      const requireGeo = BD_GEO_STATE.districts.length > 0;
+
+      const leadRequiredDefs = [
+        { id: "name" },
+        { id: "phone" },
+        { id: "address" },
+        { id: "selectedModel" },
+        { id: "needsBattery" },
+        { id: "callbackTime" }
+      ];
+      if (needsBattery === "yes") {
+        leadRequiredDefs.push({ id: "batteryModel" });
+      }
+      if (requireGeo) {
+        leadRequiredDefs.push({ id: "area" }, { id: "thana" });
+      }
+
+      const leadRequiredValid = validateRequiredFields(leadRequiredDefs);
+
+      if (!leadRequiredValid) {
+        formError.textContent = tr("form_err");
+        return;
+      }
+
+      if (invalidPhone) {
+        setFieldInvalidState("phone", true);
+        document.getElementById("phone").focus();
+        trackEvent("suspicious_submit", { reason: "invalid_phone", source: "lead_form" });
+        formError.textContent = tr("phone_err");
+        return;
+      }
+
+      if (honeypot) {
+        trackEvent("suspicious_submit", { reason: "honeypot_filled", source: "lead_form" });
+        formError.textContent = tr("spam_err");
+        return;
+      }
+
+      if (!consent) {
+        setFieldInvalidState("consentCheck", true);
+        document.getElementById("consentCheck").focus();
+        formError.textContent = tr("consent_err");
+        return;
+      }
+
+      if (rateLimited) {
+        trackEvent("suspicious_submit", { reason: "rate_limited", source: "lead_form" });
+        formError.textContent = tr("rate_limit_err");
+        return;
+      }
+
+      // === UPDATED ===
+      const payload = {
+        type: "lead",
+        brand_id: BRAND_ID,
+        product_model: model,
+        area: requireGeo ? (area + ", " + thana) : address,
+        language: currentLang,
+        backup_hour: Number.isFinite(backupHour) && backupHour > 0 ? backupHour : (powerCutHour || ""),
+        high_value: highValue,
+        suspicious: suspicious,
+        created_at: new Date().toISOString(),
+        source: INTEGRATION_CONFIG.leadSource,
+        customer_name: name,
+        name: name,
+        phone: phone,
+        address: address,
+        callback_time: callbackTime,
+        wants_battery: needsBattery === "yes",
+        battery_model: needsBattery === "yes" ? batteryModel : "",
+        power_cut_hour: powerCutHour || "",
+        submitted_at: new Date().toISOString()
+      };
+
+      const submitBtn = document.getElementById("submitBtn");
+      submitBtn.disabled = true;
+      const result = await sendLeadData(payload);
+      submitBtn.disabled = false;
+      if (!result.ok) {
+        formError.textContent = tr("spam_err");
+        return;
+      }
+
+      localStorage.setItem("remark_last_submit_at", String(now));
+      trackEvent("lead_submit_success", {
+        model: model,
+        area: requireGeo ? (area + ", " + thana) : address,
+        language: currentLang,
+        high_value: highValue
+      });
+      const ref = "RMK-" + now.toString().slice(-8);
+      document.getElementById("popupRef").textContent = tr("popup_ref") + ref;
+      document.getElementById("popup").style.display = "flex";
+    }
+
+    // === UPDATED ===
+    async function submitDealerForm(e) {
+      if (e && typeof e.preventDefault === "function") e.preventDefault();
+      const formError = document.getElementById("dealerFormError");
+      formError.textContent = "";
+      clearInvalidState(["dealerApplicantName", "dealerApplicantPhone", "dealerBusinessName", "dealerTradeLicenseStatus", "dealerBusinessType", "dealerDistrict", "dealerThana", "dealerExperience", "dealerInvestment", "dealerShowroom", "dealerAddress", "dealerConsent"]);
+
+      const applicantName = document.getElementById("dealerApplicantName").value.trim();
+      const applicantPhone = document.getElementById("dealerApplicantPhone").value.trim();
+      const businessName = document.getElementById("dealerBusinessName").value.trim();
+      const tradeLicenseStatus = document.getElementById("dealerTradeLicenseStatus").value.trim();
+      const businessType = document.getElementById("dealerBusinessType").value.trim();
+      const districtId = document.getElementById("dealerDistrict").value.trim();
+      const thanaId = document.getElementById("dealerThana").value.trim();
+      const district = getSelectedOptionText("dealerDistrict");
+      const thana = getSelectedOptionText("dealerThana");
+      const experience = document.getElementById("dealerExperience").value.trim();
+      const investment = document.getElementById("dealerInvestment").value.trim();
+      const showroom = document.getElementById("dealerShowroom").value.trim();
+      const address = document.getElementById("dealerAddress").value.trim();
+      const note = document.getElementById("dealerNote").value.trim();
+      const consent = document.getElementById("dealerConsent").checked;
+      const honeypot = document.getElementById("dealerWebsite").value.trim();
+      const now = Date.now();
+      const lastSubmitAt = Number(localStorage.getItem("remark_last_dealer_submit_at") || 0);
+
+      const requireGeo = BD_GEO_STATE.districts.length > 0;
+
+      const dealerRequiredDefs = [
+        { id: "dealerApplicantName" },
+        { id: "dealerApplicantPhone" },
+        { id: "dealerBusinessName" },
+        { id: "dealerTradeLicenseStatus" },
+        { id: "dealerBusinessType" },
+        { id: "dealerExperience" },
+        { id: "dealerInvestment" },
+        { id: "dealerShowroom" },
+        { id: "dealerAddress" }
+      ];
+      if (requireGeo) {
+        dealerRequiredDefs.push({ id: "dealerDistrict" }, { id: "dealerThana" });
+      }
+
+      const dealerRequiredValid = validateRequiredFields(dealerRequiredDefs);
+
+      if (!dealerRequiredValid) {
+        formError.textContent = tr("dealer_form_err");
+        return;
+      }
+
+      if (!/^01\d{9}$/.test(applicantPhone)) {
+        setFieldInvalidState("dealerApplicantPhone", true);
+        document.getElementById("dealerApplicantPhone").focus();
+        formError.textContent = tr("phone_err");
+        return;
+      }
+
+      if (honeypot) {
+        formError.textContent = tr("spam_err");
+        return;
+      }
+
+      if (!consent) {
+        setFieldInvalidState("dealerConsent", true);
+        document.getElementById("dealerConsent").focus();
+        formError.textContent = tr("consent_err");
+        return;
+      }
+
+      if (lastSubmitAt && now - lastSubmitAt < APP_CONFIG.leadRateLimitMs) {
+        formError.textContent = tr("rate_limit_err");
+        return;
+      }
+
+      const payload = {
+        type: "dealer",
+        brand_id: BRAND_ID,
+        applicant_name: applicantName,
+        applicant_phone: applicantPhone,
+        phone: applicantPhone,
+        business_name: businessName,
+        trade_license_status: tradeLicenseStatus,
+        business_type: businessType,
+        district: requireGeo ? district : "",
+        thana: requireGeo ? thana : "",
+        experience_years: experience,
+        investment_capacity: investment,
+        showroom_available: showroom,
+        address: address,
+        note: note || "",
+        language: currentLang,
+        source: INTEGRATION_CONFIG.dealerSource,
+        submitted_at: new Date().toISOString()
+      };
+
+      const submitBtn = document.getElementById("dealerSubmitBtn");
+      submitBtn.disabled = true;
+      const result = await sendDealerData(payload);
+      submitBtn.disabled = false;
+
+      if (!result || result.ok === false) {
+        formError.textContent = tr("spam_err");
+        return;
+      }
+
+      localStorage.setItem("remark_last_dealer_submit_at", String(now));
+      trackEvent("dealer_apply_success", { district: district, business_type: businessType });
+
+      const ref = "DLR-" + now.toString().slice(-8);
+      document.getElementById("dealerForm").style.display = "none";
+      document.getElementById("dealerSuccessWrap").style.display = "block";
+      document.getElementById("dealerSuccessText").textContent = tr("dealer_success_text");
+      document.getElementById("dealerPopupRef").textContent = tr("popup_ref") + ref;
+    }
+
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+
+    function setupScrollDepthTracker() {
+      function onScroll() {
+        const doc = document.documentElement;
+        const total = doc.scrollHeight - window.innerHeight;
+        if (total <= 0) return;
+        const depthPercent = (window.scrollY / total) * 100;
+
+        if (!TRACKING_STATE.scroll50Tracked && depthPercent >= 50) {
+          TRACKING_STATE.scroll50Tracked = true;
+          trackEvent("scroll_50", { scroll_depth: 50 });
+        }
+        if (!TRACKING_STATE.scroll90Tracked && depthPercent >= 90) {
+          TRACKING_STATE.scroll90Tracked = true;
+          trackEvent("scroll_90", { scroll_depth: 90 });
+          window.removeEventListener("scroll", onScroll);
+        }
+      }
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+    }
+
+    function setupTimeOnPageTracker() {
+      window.setTimeout(() => {
+        if (TRACKING_STATE.engagedTracked) return;
+        TRACKING_STATE.engagedTracked = true;
+        trackEvent("engaged_user", { seconds_on_page: 90 });
+      }, 90000);
+    }
+
+    function setupCalculatorStartedTracker() {
+      const ids = ["fan", "light", "motor", "fridge", "backupHour", "tv", "pc", "router", "includeSmpsLoads"];
+      const firstInteraction = () => {
+        if (TRACKING_STATE.calculatorStarted) return;
+        TRACKING_STATE.calculatorStarted = true;
+        trackEvent("calculator_started", {});
+      };
+      ids.forEach((id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.addEventListener("input", firstInteraction, { once: true });
+        el.addEventListener("change", firstInteraction, { once: true });
+      });
+    }
+
+    function setupContactClickTrackers() {
+      document.addEventListener("click", (event) => {
+        const target = event.target;
+        if (!(target instanceof Element)) return;
+        const anchor = target.closest("a");
+        if (!anchor) return;
+        const href = (anchor.getAttribute("href") || "").toLowerCase();
+        if (anchor.classList.contains("whatsapp-btn") || href.indexOf("wa.me/") !== -1 || href.indexOf("whatsapp") !== -1) {
+          trackEvent("whatsapp_click", { href: anchor.getAttribute("href") || "" });
+        }
+      });
+    }
+
+    function setupFunnelTracking() {
+      trackEvent("lp_view", {});
+      setupScrollDepthTracker();
+      setupTimeOnPageTracker();
+      setupCalculatorStartedTracker();
+      setupContactClickTrackers();
+    }
+
+    // === ADDED ===
+    function setupSectionTransitions() {
+      const sections = Array.from(document.querySelectorAll("section.section"));
+      if (!sections.length) return;
+
+      const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduceMotion) {
+        sections.forEach((section) => {
+          section.classList.remove("reveal-ready");
+          section.classList.add("is-visible");
+        });
+        return;
+      }
+
+      sections.forEach((section, index) => {
+        section.classList.add("reveal-ready");
+        if (index === 0) section.classList.add("is-visible");
+      });
+
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      }, {
+        threshold: 0.14,
+        rootMargin: "0px 0px -8% 0px"
+      });
+
+      sections.forEach((section, index) => {
+        if (index === 0) return;
+        revealObserver.observe(section);
+      });
+    }
+
+    function setupSectionSpy() {
+      const navLinks = Array.from(document.querySelectorAll("#topNav a[href^='#']"));
+      const sectionMap = navLinks
+        .map((link) => {
+          const id = link.getAttribute("href");
+          const section = id ? document.querySelector(id) : null;
+          return { link: link, section: section };
+        })
+        .filter((item) => item.section);
+
+      if (!sectionMap.length) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const found = sectionMap.find((item) => item.section === entry.target);
+          if (!found || !entry.isIntersecting) return;
+          sectionMap.forEach((item) => item.link.classList.remove("active"));
+          found.link.classList.add("active");
+        });
+      }, { rootMargin: "-40% 0px -50% 0px", threshold: 0.01 });
+
+      sectionMap.forEach((item) => observer.observe(item.section));
+      sectionMap[0].link.classList.add("active");
+    }
+
+    function runSelfQA() {
+      const requiredIds = ["fan", "light", "motor", "fridge", "backupHour", "name", "phone", "selectedModel", "needsBattery", "batteryModel", "area", "thana", "callbackTime", "consentCheck", "dealerDistrict", "dealerThana"];
+      const missing = requiredIds.filter((id) => !document.getElementById(id));
+      if (missing.length) {
+        console.warn("QA missing elements:", missing.join(", "));
+      } else {
+        console.info("QA basic element check passed");
+      }
+    }
+
+    document.getElementById("menuBtn").addEventListener("click", () => {
+      document.getElementById("topNav").classList.toggle("open");
+    });
+
+    document.querySelectorAll("#topNav a").forEach((link) => {
+      link.addEventListener("click", () => {
+        document.getElementById("topNav").classList.remove("open");
+      });
+    });
+
+    document.querySelectorAll(".lang-btn").forEach((btn) => {
+      btn.addEventListener("click", () => setLanguage(btn.dataset.lang));
+    });
+
+    // === ADDED ===
+    document.getElementById("area").addEventListener("change", (e) => {
+      renderThanaOptions("thana", e.target.value, "ph_thana", "");
+    });
+    document.getElementById("dealerDistrict").addEventListener("change", (e) => {
+      renderThanaOptions("dealerThana", e.target.value, "dealer_ph_thana", "");
+    });
+
+    document.getElementById("includeSmpsLoads").addEventListener("change", toggleSmpsFields);
+    document.getElementById("selectedModel").addEventListener("change", updateSelectedModelPrice);
+    document.getElementById("needsBattery").addEventListener("change", toggleBatteryModelField);
+
+    document.querySelectorAll(".accordion").forEach((button) => {
+      button.addEventListener("click", () => {
+        const panel = button.nextElementSibling;
+        const isOpen = panel.style.display === "block";
+        panel.style.display = isOpen ? "none" : "block";
+      });
+    });
+
+    const dealerPopup = document.getElementById("dealerPopup");
+    if (dealerPopup) {
+      dealerPopup.addEventListener("click", (event) => {
+        if (event.target === dealerPopup) closeDealerApplyPopup();
+      });
+    }
+
+    // === ADDED ===
+    document.getElementById("leadForm").addEventListener("submit", submitLeadForm);
+    document.getElementById("dealerForm").addEventListener("submit", submitDealerForm);
+    bindFormRealtimeValidation("leadForm");
+    bindFormRealtimeValidation("dealerForm");
+
+    applyIntegrationTextOverrides();
+    resetDependentThana("thana", "ph_thana");
+    resetDependentThana("dealerThana", "dealer_ph_thana");
+    initializeTracking();
+    loadTawkWidget();
+    loadBangladeshGeoOptions();
+    loadHeroVideoFromConfig();
+    toggleSmpsFields();
+    setLanguage("bn");
+    setupSectionTransitions();
+    setupFunnelTracking();
+    setupSectionSpy();
+    runSelfQA();
+  </script>
 </body>
 </html>
