@@ -66,6 +66,13 @@
         var(--bg);
       color: var(--text);
       line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img,
+    iframe,
+    video {
+      max-width: 100%;
     }
 
     .site-header {
@@ -75,14 +82,14 @@
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(8px);
       border-bottom: 1px solid #d9e6ee;
+      box-shadow: 0 8px 20px rgba(14, 35, 51, 0.06);
     }
 
     .site-header-inner {
-      min-height: 72px;
+      min-height: 76px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 14px;
+      gap: 12px;
     }
 
     .brand {
@@ -121,22 +128,30 @@
     .top-nav {
       display: flex;
       align-items: center;
-      gap: 14px;
+      justify-content: center;
+      gap: 8px;
       flex-wrap: wrap;
+      flex: 1;
+      margin: 0 8px;
+      padding: 6px;
+      border: 1px solid #d7e6ef;
+      border-radius: 14px;
+      background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
     }
 
     .top-nav a {
       text-decoration: none;
-      color: #204155;
+      color: #456171;
       font-weight: 700;
-      font-size: 0.88rem;
-      border: 1px solid #cfe0ea;
-      background: linear-gradient(180deg, #ffffff 0%, #f4fbff 100%);
+      font-size: 0.84rem;
+      border: 1px solid #d8e6ef;
+      background: #f8fcff;
       border-radius: 10px;
-      padding: 8px 12px;
+      padding: 7px 11px;
       position: relative;
-      transition: 0.2s ease;
-      box-shadow: 0 8px 20px rgba(14, 35, 51, 0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+      box-shadow: 0 4px 10px rgba(14, 35, 51, 0.05);
+      opacity: 0.95;
     }
 
     .top-nav a::after {
@@ -154,9 +169,10 @@
     }
 
     .top-nav a:hover {
-      border-color: #9fcbde;
-      box-shadow: 0 10px 24px rgba(10, 127, 190, 0.2);
+      border-color: #bed3df;
+      box-shadow: 0 8px 16px rgba(10, 127, 190, 0.12);
       transform: translateY(-1px);
+      opacity: 1;
     }
 
     .top-nav a:hover::after,
@@ -169,12 +185,17 @@
       background: linear-gradient(180deg, #f0fff6 0%, #e8f7ff 100%);
       box-shadow: 0 10px 28px rgba(15, 157, 88, 0.16);
       color: #103b4f;
+      font-size: 0.88rem;
+      padding: 8px 12px;
+      opacity: 1;
+      transform: translateY(-1px);
     }
 
     .top-actions {
       display: flex;
       align-items: center;
       gap: 8px;
+      margin-left: auto;
     }
 
     .lang-toggle {
@@ -455,34 +476,80 @@
     }
 
     .offer-banner {
-      margin: 10px 0 16px;
+      margin: 12px 0 20px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      gap: 14px;
     }
 
     .offer-title {
-      margin: 22px 0 10px;
-      font-size: 0.84rem;
+      margin: 24px 0 12px;
+      font-size: clamp(1.2rem, 2.8vw, 1.75rem);
       font-weight: 900;
-      letter-spacing: 0.09em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: #8a5a00;
+      color: #8a4b00;
+      text-shadow: 0 6px 16px rgba(173, 123, 6, 0.18);
     }
 
     .offer-pill {
-      background: linear-gradient(120deg, #fff6ce 0%, #ffd267 52%, #ffbf47 100%);
-      border: 2px solid #f0b020;
-      color: #523700;
-      border-radius: 16px;
-      padding: 14px 16px;
-      font-size: 1.02rem;
+      background: transparent;
+      border: 0;
+      color: #0b6e40;
+      border-radius: 0;
+      padding: 4px 0 10px;
+      font-size: 1.14rem;
       font-weight: 900;
-      box-shadow: 0 14px 34px rgba(173, 123, 6, 0.35);
-      text-align: center;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      animation: offerPulse 2.2s ease-in-out infinite;
+      box-shadow: none;
+      text-align: left;
+      letter-spacing: 0.01em;
+      display: block;
+      position: relative;
+      line-height: 1.35;
+      pointer-events: none;
+      user-select: none;
+      animation: offerJump 1.8s ease-in-out infinite;
+      text-shadow: 0 2px 8px rgba(10, 127, 190, 0.12);
+    }
+
+    .offer-pill::before {
+      content: "✦";
+      display: inline-block;
+      margin-right: 8px;
+      color: currentColor;
+      font-size: 0.9rem;
+      font-weight: 900;
+      vertical-align: middle;
+    }
+
+    .offer-pill:nth-child(2) {
+      animation-delay: 0.2s;
+      color: #0a5f94;
+      text-shadow: 0 2px 8px rgba(15, 157, 88, 0.12);
+    }
+
+    .offer-pill::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: min(220px, 70%);
+      height: 2px;
+      border-radius: 999px;
+      background: currentColor;
+      opacity: 0.35;
+    }
+
+    @keyframes offerJump {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+      }
+      30% {
+        transform: translateY(-5px) scale(1.01);
+      }
+      60% {
+        transform: translateY(-2px) scale(1.005);
+      }
     }
 
     @keyframes offerPulse {
@@ -851,32 +918,75 @@
       gap: 16px;
     }
 
-    .lifepo4-table-wrap {
-      overflow-x: auto;
+    .lifepo4-card-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      align-items: start;
+    }
+
+    .lifepo4-mini-card {
       border: 1px solid #d4e5ef;
-      border-radius: 12px;
-      background: #fff;
+      border-radius: 10px;
+      padding: 10px 11px;
+      background: linear-gradient(180deg, #ffffff 0%, #f6fbff 100%);
+      align-self: start;
+      height: auto;
     }
 
-    .lifepo4-table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 760px;
+    .lifepo4-mini-card .m {
+      margin: 0 0 4px;
       font-size: 0.9rem;
-    }
-
-    .lifepo4-table th,
-    .lifepo4-table td {
-      border: 1px solid #dbe7ef;
-      padding: 8px 10px;
-      text-align: left;
-      white-space: nowrap;
-    }
-
-    .lifepo4-table th {
-      background: #eef8ff;
-      color: #10384d;
       font-weight: 800;
+      color: #123a50;
+    }
+
+    .lifepo4-mini-card .c,
+    .lifepo4-mini-card .p {
+      margin: 0;
+      font-size: 0.82rem;
+      color: #35596b;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .lifepo4-mini-card .p {
+      margin-top: 4px;
+      color: #0b6e40;
+    }
+
+    .lifepo4-mini-card .d-btn {
+      margin-top: 8px;
+      border: 1px solid #cfe0ea;
+      border-radius: 999px;
+      background: #f2f9ff;
+      color: #1f4b63;
+      padding: 6px 10px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .lifepo4-mini-card .d-wrap {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.32s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.26s ease, margin-top 0.22s ease;
+      margin-top: 0;
+    }
+
+    .lifepo4-mini-card.open .d-wrap {
+      max-height: 120px;
+      opacity: 1;
+      margin-top: 8px;
+    }
+
+    .lifepo4-mini-card .d {
+      margin: 0 0 4px;
+      font-size: 0.76rem;
+      color: #3c5f70;
+      font-weight: 700;
+      line-height: 1.45;
     }
 
     .lifepo4-note {
@@ -937,6 +1047,10 @@
       grid-template-columns: 1fr 1fr;
       gap: 20px;
       margin-top: 24px;
+    }
+
+    .calc-grid > * {
+      min-width: 0;
     }
 
     .input-grid {
@@ -1030,10 +1144,23 @@
       padding: 20px;
     }
 
+    #resultBox {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.42s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.42s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    #resultBox.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .result-item {
       margin: 0 0 8px;
       color: #0f3d28;
       font-weight: 700;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
 
     .highlight {
@@ -1072,6 +1199,72 @@
       border-radius: 0 0 10px 10px;
       padding: 14px 16px;
       color: var(--muted);
+    }
+
+    .why-accordion {
+      margin-top: 14px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .why-acc-item {
+      border: 1px solid #d5e5ef;
+      border-radius: 12px;
+      background: #fff;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .why-acc-btn {
+      width: 100%;
+      border: 0;
+      background: linear-gradient(180deg, #f3fbff 0%, #ecf7ff 100%);
+      color: #123b51;
+      padding: 14px 16px;
+      font-size: 1rem;
+      font-weight: 800;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .why-acc-arrow {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 900;
+      color: #0a7fbe;
+      background: linear-gradient(180deg, #ffffff 0%, #e8f5ff 100%);
+      border: 1px solid #c7dff0;
+      box-shadow: 0 5px 12px rgba(10, 127, 190, 0.16);
+      transition: transform 0.28s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.2s ease;
+      line-height: 1;
+    }
+
+    .why-acc-item.open .why-acc-arrow {
+      transform: rotate(180deg);
+      box-shadow: 0 8px 16px rgba(15, 157, 88, 0.2);
+    }
+
+    .why-acc-panel {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      padding: 0 16px;
+      background: #fff;
+      transition: max-height 0.36s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.32s ease, padding 0.28s ease;
+    }
+
+    .why-acc-item.open .why-acc-panel {
+      opacity: 1;
+      overflow: visible;
+      padding: 14px 16px 10px;
     }
 
     .form-card .warning {
@@ -1167,36 +1360,6 @@
       z-index: 50;
     }
 
-    .live-support-btn {
-      position: fixed;
-      right: 18px;
-      bottom: 78px;
-      border: 0;
-      border-radius: 999px;
-      padding: 12px 18px;
-      background: linear-gradient(135deg, #0a7fbe 0%, #0f9d58 100%);
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.9rem;
-      cursor: pointer;
-      box-shadow: 0 14px 26px rgba(8, 69, 109, 0.34);
-      z-index: 80;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .live-support-btn svg {
-      width: 18px;
-      height: 18px;
-      display: block;
-    }
-
-    .live-support-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 16px 30px rgba(8, 69, 109, 0.42);
-    }
 
     .mobile-cta {
       display: none;
@@ -1357,6 +1520,10 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
+        margin: 0;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
       }
 
       .top-nav.open {
@@ -1389,6 +1556,17 @@
         grid-template-columns: 1fr;
       }
 
+      .preset-row {
+        gap: 10px;
+      }
+
+      .preset-btn {
+        flex: 1 1 calc(50% - 8px);
+        min-height: 42px;
+        padding: 10px 14px;
+        font-size: 0.92rem;
+      }
+
       .models-toolbar {
         justify-content: stretch;
       }
@@ -1397,41 +1575,17 @@
         grid-template-columns: 1fr;
       }
 
+      .offer-pill {
+        font-size: 1.04rem;
+        padding: 4px 0 10px;
+      }
+
       .key-feature-grid {
         grid-template-columns: 1fr;
       }
 
-      .lifepo4-table {
-        min-width: 0;
-      }
-
-      .lifepo4-table thead {
-        display: none;
-      }
-
-      .lifepo4-table tr {
-        display: block;
-        border-bottom: 1px solid #dbe7ef;
-      }
-
-      .lifepo4-table td {
-        display: grid;
-        grid-template-columns: 120px 1fr;
-        gap: 8px;
-        white-space: normal;
-        border: 0;
-        border-top: 1px dashed #e2ecf2;
-        padding: 8px 10px;
-      }
-
-      .lifepo4-table td:first-child {
-        border-top: 0;
-      }
-
-      .lifepo4-table td::before {
-        content: attr(data-label);
-        font-weight: 800;
-        color: #123a50;
+      .lifepo4-card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
     .section {
@@ -1448,14 +1602,6 @@
 
       .whatsapp-btn {
         display: none;
-      }
-
-      .live-support-btn {
-        display: inline-flex;
-        right: 12px;
-        bottom: 84px;
-        padding: 10px 14px;
-        font-size: 0.84rem;
       }
 
       .mobile-cta {
@@ -1477,6 +1623,21 @@
 
       body {
         padding-bottom: 78px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(1120px, 94%);
+      }
+
+      .section .container {
+        padding: 14px;
+        border-radius: 16px;
+      }
+
+      .offer-title {
+        margin-top: 20px;
       }
     }
   </style>
@@ -1687,30 +1848,53 @@
     <div class="container">
       <h2 data-i18n="sec_features_title">কেন REMARK IPS বেছে নেবেন?</h2>
       <p class="muted" id="featuresIntro">সেফটি, পারফরম্যান্স এবং দীর্ঘমেয়াদি ব্যবহার নিশ্চিত করার জন্য তৈরি।</p>
-      <div class="cards-3">
-        <article class="card card-soft">
-          <h3 data-i18n="core_features_title">Core Features</h3>
-          <ul class="feature-list" id="coreFeaturesList"></ul>
+      <div class="why-accordion" id="whyAccordion">
+        <article class="why-acc-item">
+          <button class="why-acc-btn" type="button" aria-expanded="false">
+            <span data-i18n="core_features_title">Core Features</span>
+            <span class="why-acc-arrow">▼</span>
+          </button>
+          <div class="why-acc-panel">
+            <ul class="feature-list" id="coreFeaturesList"></ul>
+          </div>
         </article>
-        <article class="card card-soft">
-          <h3 data-i18n="customer_trust_title">Customer Trust</h3>
-          <ul class="proof-list" id="trustList"></ul>
+        <article class="why-acc-item">
+          <button class="why-acc-btn" type="button" aria-expanded="false">
+            <span data-i18n="customer_trust_title">Customer Trust</span>
+            <span class="why-acc-arrow">▼</span>
+          </button>
+          <div class="why-acc-panel">
+            <ul class="proof-list" id="trustList"></ul>
+          </div>
         </article>
-        <article class="card card-soft">
-          <h3 data-i18n="support_service_title">Support & Service</h3>
-          <ul class="proof-list" id="supportList"></ul>
+        <article class="why-acc-item">
+          <button class="why-acc-btn" type="button" aria-expanded="false">
+            <span data-i18n="support_service_title">Support & Service</span>
+            <span class="why-acc-arrow">▼</span>
+          </button>
+          <div class="why-acc-panel">
+            <ul class="proof-list" id="supportList"></ul>
+          </div>
         </article>
-      </div>
-      <p class="muted" data-i18n="spec_intro">প্রটেকশন, দক্ষতা এবং স্থিতিশীল আউটপুটের জন্য প্রয়োজনীয় টেকনিক্যাল ফিচার।</p>
-      <div class="key-feature-grid">
-        <div class="card">
-          <h3 data-i18n="key_features_title">টেকনিক্যাল ফিচারসমূহ</h3>
-          <ul class="spec-list" id="keyList1"></ul>
-        </div>
-        <div class="card">
-          <h3 data-i18n="perf_title">Protection & Performance</h3>
-          <ul class="spec-list" id="keyList2"></ul>
-        </div>
+        <article class="why-acc-item">
+          <button class="why-acc-btn" type="button" aria-expanded="false">
+            <span data-i18n="key_features_title">টেকনিক্যাল ফিচারসমূহ</span>
+            <span class="why-acc-arrow">▼</span>
+          </button>
+          <div class="why-acc-panel">
+            <p class="muted" data-i18n="spec_intro">প্রটেকশন, দক্ষতা এবং স্থিতিশীল আউটপুটের জন্য প্রয়োজনীয় টেকনিক্যাল ফিচার।</p>
+            <ul class="spec-list" id="keyList1"></ul>
+          </div>
+        </article>
+        <article class="why-acc-item">
+          <button class="why-acc-btn" type="button" aria-expanded="false">
+            <span data-i18n="perf_title">Protection & Performance</span>
+            <span class="why-acc-arrow">▼</span>
+          </button>
+          <div class="why-acc-panel">
+            <ul class="spec-list" id="keyList2"></ul>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -1731,30 +1915,8 @@
     <div class="container">
       <h2 data-i18n="sec_lifepo4_title">REMARK LITHIUM BATTERY (LiFePO4)</h2>
       <p class="muted" data-i18n="lifepo4_intro">REMARK LiFePO4 ব্যাটারির অফিসিয়াল মডেল, ক্যাপাসিটি, MRP এবং ওয়ারেন্টি তালিকা।</p>
-      <div class="lifepo4-grid">
-        <div>
-          <div class="lifepo4-table-wrap">
-            <table class="lifepo4-table">
-              <thead>
-                <tr>
-                  <th data-i18n="lfp_col_sl">SL</th>
-                  <th data-i18n="lfp_col_model">Model</th>
-                  <th data-i18n="lfp_col_capacity">Capacity</th>
-                  <th data-i18n="lfp_col_life">Life Cycle</th>
-                  <th data-i18n="lfp_col_mrp">MRP</th>
-                  <th data-i18n="lfp_col_warranty">Warranty</th>
-                </tr>
-              </thead>
-              <tbody id="lifepo4TableBody"></tbody>
-            </table>
-          </div>
-          <p class="lifepo4-note" data-i18n="lifepo4_note">নোট: কাঁচামালের বাজার দরের পরিবর্তনের কারণে কোম্পানি যে কোনো সময় মূল্য পরিবর্তন করতে পারে।</p>
-        </div>
-        <article class="card card-soft">
-          <h3 data-i18n="lifepo4_features_title">LiFePO4 Battery Features</h3>
-          <ul class="spec-list" id="lifepo4FeaturesList"></ul>
-        </article>
-      </div>
+      <div class="lifepo4-card-grid" id="lifepo4CardGrid"></div>
+      <p class="lifepo4-note" data-i18n="lifepo4_note">নোট: কাঁচামালের বাজার দরের পরিবর্তনের কারণে কোম্পানি যে কোনো সময় মূল্য পরিবর্তন করতে পারে।</p>
     </div>
   </section>
 
@@ -2033,8 +2195,9 @@
         footerAddressEn: "Dhaka, Bangladesh"
       },
       app: {
-        leadApiEndpoint: "https://script.google.com/macros/s/AKfycbzV-bl4jWctCWKhfpPcY7-wZK1JQcyxSYlbPOFTr0s-AJ32x7GZRdUTaxhS9_uzQZUf9g/exec",
-        dealerApiEndpoint: "https://script.google.com/macros/s/AKfycbzV-bl4jWctCWKhfpPcY7-wZK1JQcyxSYlbPOFTr0s-AJ32x7GZRdUTaxhS9_uzQZUf9g/exec",
+        leadApiEndpoint: "https://script.google.com/macros/s/AKfycbxNlokKpMMTjjq0h2A-nYuAqVYb-ftBU4H0TSqp7_822XtyevfCjpyOLuPjRQGmwKzX/exec",
+        dealerApiEndpoint: "https://script.google.com/macros/s/AKfycbxNlokKpMMTjjq0h2A-nYuAqVYb-ftBU4H0TSqp7_822XtyevfCjpyOLuPjRQGmwKzX/exec",
+        inventoryApiEndpoint: "https://script.google.com/macros/s/AKfycbxNlokKpMMTjjq0h2A-nYuAqVYb-ftBU4H0TSqp7_822XtyevfCjpyOLuPjRQGmwKzX/exec",
         googleSheetWebhook: "",
         leadRateLimitMs: 60000,
         ga4MeasurementId: "",
@@ -2228,6 +2391,9 @@
         product_note: "ছবিগুলো ডেমো। আপনি নিজের image link দিলে আমি replace করে দেব।",
         sec_lifepo4_title: "REMARK LITHIUM BATTERY (LiFePO4)",
         lifepo4_intro: "REMARK LiFePO4 ব্যাটারির অফিসিয়াল মডেল, ক্যাপাসিটি, MRP এবং ওয়ারেন্টি তালিকা।",
+        lifepo4_acc_price: "ব্যাটারি প্রাইস লিস্ট",
+        lifepo4_acc_features: "ব্যাটারি ফিচার",
+        lifepo4_details_btn: "বিস্তারিত দেখুন",
         lfp_col_sl: "SL No.",
         lfp_col_model: "মডেল",
         lfp_col_capacity: "ক্যাপাসিটি",
@@ -2345,7 +2511,7 @@
         contact_l1: "জরুরি যোগাযোগ: <strong>01742-313132</strong>",
         contact_l2: "ডিলার সাপোর্ট: <strong>01911-223344</strong>",
         key_features_title: "টেকনিক্যাল ফিচারসমূহ",
-        key_features_list: ["১০০% কপার ট্রান্সফরমার", "জিপ চার্জ টেকনোলজি", "২০০x ব্যাটারি লাইফ", "৯৮% ডিএম ওয়াটার সেভিং টেকনোলজি", "৯৫% দক্ষতা", "ডিএসপি - পিওর সাইন ওয়েভ", "ওভার চার্জ প্রোটেকশন", "ওভার লোড প্রোটেকশন"],
+        key_features_list: ["২০০x ব্যাটারি লাইফ", "৯৮% ডিএম ওয়াটার সেভিং টেকনোলজি", "৯৫% দক্ষতা", "ডিএসপি - পিওর সাইন ওয়েভ", "ওভার চার্জ প্রোটেকশন", "ওভার লোড প্রোটেকশন"],
         perf_title: "সুরক্ষা ও পারফরম্যান্স",
         perf_list: ["লো ব্যাটারি প্রোটেকশন", "শর্ট সার্কিট প্রোটেকশন", "এয়ার কুলিং", "দীর্ঘস্থায়ী পারফরম্যান্স", "১০০% রিপেয়ারেবল", "কনস্ট্যান্ট ভোল্টেজ", "ইউপিএস মোড ১০ms-২০ms ম্যাক্স", "ইমার্জেন্সি বাজ অ্যালার্ম"],
         tbl_model: "মডেল",
@@ -2462,6 +2628,9 @@
         product_note: "Images are demo placeholders. Share your image links and I will replace them.",
         sec_lifepo4_title: "REMARK LITHIUM BATTERY (LiFePO4)",
         lifepo4_intro: "Official REMARK LiFePO4 battery list with model, capacity, MRP, and warranty.",
+        lifepo4_acc_price: "Battery Price List",
+        lifepo4_acc_features: "Battery Features",
+        lifepo4_details_btn: "View Details",
         lfp_col_sl: "SL No.",
         lfp_col_model: "Model",
         lfp_col_capacity: "Capacity",
@@ -2579,7 +2748,7 @@
         contact_l1: "Urgent Contact: <strong>01742-313132</strong>",
         contact_l2: "Dealer Support: <strong>01911-223344</strong>",
         key_features_title: "Technical Features",
-        key_features_list: ["100% Copper Transformer", "Zip Charge Technology", "200x Battery Life", "98% DM Water Saving Technology", "95% Efficiency", "DSP - Pure Sine Wave", "Over Charge Protection", "Over Load Protection"],
+        key_features_list: ["200x Battery Life", "98% DM Water Saving Technology", "95% Efficiency", "DSP - Pure Sine Wave", "Over Charge Protection", "Over Load Protection"],
         perf_title: "Protection & Performance",
         perf_list: ["Low Battery Protection", "Short Circuit Protection", "Air Cooling", "Long Lasting Performance", "100% Repairable", "Constant Voltage", "UPS Mode 10ms-20ms Max", "Emergency Buzz Alarm"],
         tbl_model: "Model",
@@ -2665,26 +2834,6 @@
       document.head.appendChild(script);
       tawkWidgetInjected = true;
       return true;
-    }
-
-    function openLiveSupport() {
-      trackEvent("live_support_click", { source: "floating_button" });
-      if (window.Tawk_API && typeof window.Tawk_API.maximize === "function") {
-        window.Tawk_API.maximize();
-        return;
-      }
-
-      const loaded = loadTawkWidget();
-      if (!loaded) {
-        console.warn("Set TAWK_CONFIG.propertyId and TAWK_CONFIG.widgetId before using Live Support.");
-        return;
-      }
-
-      setTimeout(() => {
-        if (window.Tawk_API && typeof window.Tawk_API.maximize === "function") {
-          window.Tawk_API.maximize();
-        }
-      }, 900);
     }
 
     // === UPDATED ===
@@ -2909,6 +3058,123 @@
       return BD_GEO_STATE.loadPromise;
     }
 
+    function parsePriceToNumber(value) {
+      const cleaned = String(value || "").replace(/[^\d.]/g, "");
+      const n = Number(cleaned);
+      return Number.isFinite(n) ? n : 0;
+    }
+
+    function toBdtPrice(value) {
+      const n = Number(value);
+      if (!Number.isFinite(n) || n <= 0) return "";
+      return "৳" + n.toLocaleString("en-US");
+    }
+
+    function parseInventoryVa(value) {
+      const txt = String(value || "");
+      const kva = txt.match(/(\d+(?:\.\d+)?)\s*KVA/i);
+      if (kva) return Math.round(Number(kva[1]) * 1000);
+      const va = txt.match(/(\d+(?:\.\d+)?)\s*VA/i);
+      if (va) return Math.round(Number(va[1]));
+      return 0;
+    }
+
+    function syncCatalogsFromInventoryRows(rows) {
+      if (!Array.isArray(rows) || !rows.length) return false;
+
+      const ipsRows = rows.filter((row) => {
+        const t = String(row.product_type || "").toLowerCase();
+        return t !== "battery";
+      });
+      const batteryRows = rows.filter((row) => {
+        const t = String(row.product_type || "").toLowerCase();
+        return t === "battery";
+      });
+      if (!ipsRows.length) return false;
+
+      modelCatalog.length = 0;
+      PRODUCT_CATALOG_RAW.length = 0;
+      productCatalog.length = 0;
+      Object.keys(STOCK_COUNT_BY_MODEL).forEach((k) => delete STOCK_COUNT_BY_MODEL[k]);
+
+      ipsRows.forEach((row) => {
+        const model = String(row.product_model || "").trim();
+        if (!model) return;
+        const remaining = Number(row.remaining_stock || 0);
+        const stock = Number.isFinite(remaining) ? Math.max(0, Math.floor(remaining)) : 0;
+        const price = toBdtPrice(parsePriceToNumber(row.price));
+        const va = parseInventoryVa(row.capacity || model);
+        const imageUrl = String(row.image_url || "").trim() || INTEGRATION_CONFIG.fallbackProductImage;
+        const batteryText = String(row.battery || row.battery_support || "N/A").trim();
+        const capText = String(row.capacity || "").trim() || (va ? String(va) + "VA" : "N/A");
+        const wattText = String(row.watt || row.output_watt || "").trim() || "N/A";
+
+        STOCK_COUNT_BY_MODEL[model] = stock;
+        modelCatalog.push({
+          maxVA: va || Infinity,
+          model: model + (capText && capText !== "N/A" ? " (" + capText + ")" : ""),
+          price: price || "৳0",
+          defaultAh: Number(row.default_ah || 200) || 200
+        });
+        PRODUCT_CATALOG_RAW.push({
+          model: model,
+          typeBn: "ইনভার্টার/ইউপিএস",
+          typeEn: "Inverter/UPS",
+          capacity: capText,
+          watt: wattText,
+          battery: batteryText,
+          price: price || "৳0",
+          img: imageUrl
+        });
+      });
+
+      modelCatalog.sort((a, b) => (a.maxVA || Infinity) - (b.maxVA || Infinity));
+
+      PRODUCT_CATALOG_RAW.forEach((item) => {
+        productCatalog.push(Object.assign({}, item, {
+          stock_count: STOCK_COUNT_BY_MODEL[item.model] || 0
+        }));
+      });
+
+      if (batteryRows.length) {
+        lifepo4Catalog.length = 0;
+        batteryRows.forEach((row) => {
+          const model = String(row.product_model || "").trim();
+          if (!model) return;
+          lifepo4Catalog.push({
+            model: model,
+            capacity: String(row.capacity || "N/A"),
+            lifeCycle: String(row.life_cycle || row.lifeCycle || "N/A"),
+            mrp: toBdtPrice(parsePriceToNumber(row.price)) || "৳0",
+            warranty: String(row.warranty || (String(row.warranty_year || "") ? row.warranty_year + " Years" : "N/A"))
+          });
+        });
+      }
+
+      return true;
+    }
+
+    async function syncLandingCatalogFromInventory() {
+      try {
+        const endpoint = APP_CONFIG.inventoryApiEndpoint || APP_CONFIG.leadApiEndpoint;
+        if (!endpoint) return;
+        const url = endpoint + "?action=get_inventory_public&brand_id=" + encodeURIComponent(BRAND_ID);
+        const res = await fetch(url, { method: "GET" });
+        if (!res.ok) return;
+        const json = await res.json();
+        if (!json || !json.ok) return;
+        const changed = syncCatalogsFromInventoryRows(json.inventory || []);
+        if (!changed) return;
+
+        renderModelOptions(currentLang);
+        renderBatteryOptions(currentLang);
+        renderProducts(currentLang);
+        updateSelectedModelPrice();
+      } catch (err) {
+        console.warn("Inventory sync failed:", err);
+      }
+    }
+
     function getTrackingContext() {
       return {
         ab_variant: getABVariant(),
@@ -3025,25 +3291,38 @@
       updateProductActions(lang);
     }
 
-    function renderLifepo4Table(lang) {
-      const body = document.getElementById("lifepo4TableBody");
-      if (!body) return;
-      const colSl = i18n[lang].lfp_col_sl;
-      const colModel = i18n[lang].lfp_col_model;
-      const colCapacity = i18n[lang].lfp_col_capacity;
-      const colLife = i18n[lang].lfp_col_life;
-      const colMrp = i18n[lang].lfp_col_mrp;
-      const colWarranty = i18n[lang].lfp_col_warranty;
-      body.innerHTML = lifepo4Catalog.map((item, index) =>
-        "<tr>" +
-        "<td data-label=\"" + colSl + "\">" + (index + 1) + "</td>" +
-        "<td data-label=\"" + colModel + "\">" + item.model + "</td>" +
-        "<td data-label=\"" + colCapacity + "\">" + item.capacity + "</td>" +
-        "<td data-label=\"" + colLife + "\">" + item.lifeCycle + "</td>" +
-        "<td data-label=\"" + colMrp + "\">" + item.mrp + "</td>" +
-        "<td data-label=\"" + colWarranty + "\">" + item.warranty + "</td>" +
-        "</tr>"
+    function renderLifepo4Cards(lang) {
+      const grid = document.getElementById("lifepo4CardGrid");
+      if (!grid) return;
+      const cap = i18n[lang].lfp_col_capacity;
+      const life = i18n[lang].lfp_col_life;
+      const warranty = i18n[lang].lfp_col_warranty;
+      const mrp = i18n[lang].lfp_col_mrp;
+      const detailsBtn = i18n[lang].lifepo4_details_btn;
+      grid.innerHTML = lifepo4Catalog.map((item) =>
+        "<article class=\"lifepo4-mini-card\">" +
+        "<p class=\"m\">" + item.model + "</p>" +
+        "<p class=\"c\">" + cap + ": " + item.capacity + "</p>" +
+        "<p class=\"p\">" + mrp + ": " + item.mrp + "</p>" +
+        "<button class=\"d-btn\" type=\"button\">" + detailsBtn + "</button>" +
+        "<div class=\"d-wrap\">" +
+        "<p class=\"d\">" + life + ": " + item.lifeCycle + "</p>" +
+        "<p class=\"d\">" + warranty + ": " + item.warranty + "</p>" +
+        "</div>" +
+        "</article>"
       ).join("");
+      setupLifepo4CardToggles();
+    }
+
+    function setupLifepo4CardToggles() {
+      const cards = Array.from(document.querySelectorAll("#lifepo4CardGrid .lifepo4-mini-card"));
+      cards.forEach((card) => {
+        const btn = card.querySelector(".d-btn");
+        if (!btn) return;
+        btn.addEventListener("click", () => {
+          card.classList.toggle("open");
+        });
+      });
     }
 
     function toggleAllProducts() {
@@ -3100,15 +3379,15 @@
       renderList("supportList", i18n[lang].support_points);
       renderList("keyList1", i18n[lang].key_features_list);
       renderList("keyList2", i18n[lang].perf_list);
-      renderList("lifepo4FeaturesList", i18n[lang].lifepo4_features_list);
       renderModelOptions(lang);
       renderBatteryOptions(lang);
       syncLocationLanguageOptions();
       renderProducts(lang);
-      renderLifepo4Table(lang);
+      renderLifepo4Cards(lang);
       applyABCopy(lang);
       updateSelectedModelPrice();
       toggleBatteryModelField();
+      refreshOpenCollapsibleHeights();
 
       document.querySelectorAll("[data-ph]").forEach((node) => {
         const key = node.dataset.ph;
@@ -3192,8 +3471,30 @@
       document.getElementById("pc").value = picked.pc;
       document.getElementById("router").value = picked.router;
       document.getElementById("includeSmpsLoads").checked = true;
-      calculateLoad();
+      toggleSmpsFields();
+      document.getElementById("calcError").textContent = "";
+      hideCalculatorResult();
       trackEvent("preset_applied", { preset: type });
+    }
+
+    function hideCalculatorResult() {
+      const box = document.getElementById("resultBox");
+      if (!box) return;
+      box.classList.remove("is-visible");
+      box.style.display = "none";
+    }
+
+    function showCalculatorResult() {
+      const box = document.getElementById("resultBox");
+      if (!box) return;
+      box.classList.remove("is-visible");
+      box.style.display = "block";
+      requestAnimationFrame(() => {
+        box.classList.add("is-visible");
+        window.setTimeout(() => {
+          box.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 80);
+      });
     }
 
     function toggleSmpsFields() {
@@ -3412,7 +3713,7 @@
       const backupHour = Number(document.getElementById("backupHour").value || 0);
 
       if (totalWatt <= 0 || !Number.isFinite(backupHour) || backupHour <= 0) {
-        document.getElementById("resultBox").style.display = "none";
+        hideCalculatorResult();
         calcError.textContent = tr("calc_err");
         return;
       }
@@ -3440,7 +3741,7 @@
       document.getElementById("modelPrice").textContent = tr("result_mrp") + matched.price;
       document.getElementById("selectedModel").value = matched.model;
       updateSelectedModelPrice();
-      document.getElementById("resultBox").style.display = "block";
+      showCalculatorResult();
       trackEvent("calculator_result", {
         model: matched.model,
         required_va: totalRequiredVA,
@@ -3549,12 +3850,16 @@
         return;
       }
 
+      const locationLabel = [thana, area].filter(Boolean).join(", ");
+      const formattedArea = address ? (address + (locationLabel ? " | " + locationLabel : "")) : locationLabel;
+
       // === UPDATED ===
       const payload = {
+        action: "insert_lead",
         type: "lead",
         brand_id: BRAND_ID,
         product_model: model,
-        area: requireGeo ? (area + ", " + thana) : address,
+        area: formattedArea,
         language: currentLang,
         backup_hour: Number.isFinite(backupHour) && backupHour > 0 ? backupHour : (powerCutHour || ""),
         high_value: highValue,
@@ -3584,7 +3889,7 @@
       localStorage.setItem("remark_last_submit_at", String(now));
       trackEvent("lead_submit_success", {
         model: model,
-        area: requireGeo ? (area + ", " + thana) : address,
+        area: formattedArea,
         language: currentLang,
         high_value: highValue
       });
@@ -3668,6 +3973,7 @@
       }
 
       const payload = {
+        action: "insert_dealer",
         type: "dealer",
         brand_id: BRAND_ID,
         applicant_name: applicantName,
@@ -3838,6 +4144,67 @@
       sectionMap[0].link.classList.add("active");
     }
 
+    function setupCollapsibleGroup(groupId) {
+      const wrap = document.getElementById(groupId);
+      if (!wrap) return;
+      const items = Array.from(wrap.querySelectorAll(".why-acc-item"));
+      if (!items.length) return;
+
+      function closeItem(item) {
+        item.classList.remove("open");
+        const btn = item.querySelector(".why-acc-btn");
+        const panel = item.querySelector(".why-acc-panel");
+        if (btn) btn.setAttribute("aria-expanded", "false");
+        if (!panel) return;
+        if (panel.style.maxHeight === "none") {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+        requestAnimationFrame(() => {
+          panel.style.maxHeight = "0px";
+        });
+      }
+
+      function openItem(target) {
+        items.forEach((item) => {
+          if (item !== target) closeItem(item);
+        });
+        target.classList.add("open");
+        const btn = target.querySelector(".why-acc-btn");
+        const panel = target.querySelector(".why-acc-panel");
+        if (btn) btn.setAttribute("aria-expanded", "true");
+        if (!panel) return;
+        panel.style.maxHeight = panel.scrollHeight + 56 + "px";
+        window.setTimeout(() => {
+          if (target.classList.contains("open")) {
+            panel.style.maxHeight = "none";
+          }
+        }, 380);
+      }
+
+      items.forEach((item) => {
+        const btn = item.querySelector(".why-acc-btn");
+        if (!btn) return;
+        closeItem(item);
+        btn.addEventListener("click", () => {
+          if (item.classList.contains("open")) {
+            closeItem(item);
+            return;
+          }
+          openItem(item);
+        });
+      });
+    }
+
+    function refreshOpenCollapsibleHeights() {
+      document.querySelectorAll(".why-acc-item.open .why-acc-panel").forEach((panel) => {
+        panel.style.maxHeight = panel.scrollHeight + 56 + "px";
+        window.setTimeout(() => {
+          const item = panel.closest(".why-acc-item");
+          if (item && item.classList.contains("open")) panel.style.maxHeight = "none";
+        }, 380);
+      });
+    }
+
     function runSelfQA() {
       const requiredIds = ["fan", "light", "motor", "fridge", "backupHour", "name", "phone", "selectedModel", "needsBattery", "batteryModel", "area", "thana", "callbackTime", "consentCheck", "dealerDistrict", "dealerThana"];
       const missing = requiredIds.filter((id) => !document.getElementById(id));
@@ -3873,14 +4240,7 @@
     document.getElementById("includeSmpsLoads").addEventListener("change", toggleSmpsFields);
     document.getElementById("selectedModel").addEventListener("change", updateSelectedModelPrice);
     document.getElementById("needsBattery").addEventListener("change", toggleBatteryModelField);
-
-    document.querySelectorAll(".accordion").forEach((button) => {
-      button.addEventListener("click", () => {
-        const panel = button.nextElementSibling;
-        const isOpen = panel.style.display === "block";
-        panel.style.display = isOpen ? "none" : "block";
-      });
-    });
+    window.addEventListener("resize", refreshOpenCollapsibleHeights);
 
     const dealerPopup = document.getElementById("dealerPopup");
     if (dealerPopup) {
@@ -3904,9 +4264,12 @@
     loadHeroVideoFromConfig();
     toggleSmpsFields();
     setLanguage("bn");
+    syncLandingCatalogFromInventory();
+    window.setInterval(syncLandingCatalogFromInventory, 90000);
     setupSectionTransitions();
     setupFunnelTracking();
     setupSectionSpy();
+    setupCollapsibleGroup("whyAccordion");
     runSelfQA();
   </script>
 </body>
